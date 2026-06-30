@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Guide</title>
+  <style>
+    /* ============================================
+     🎨 CLIENT COLORS - CHANGE THESE ONLY
+     ============================================
+     Update these 2 values for each client.
+     Everything else is auto-generated.
+     ============================================ */
+    :root {
+      --color-primary: #017fd0;
+      --color-secondary: #012d20;
+      /* Optional: uncomment to override font */
+      /* --font-family-base: 'YourFont', system-ui, sans-serif; */
+    }
+
+    /* ============================================
+     ⚠️  DO NOT EDIT BELOW THIS LINE
+     Core styles — same for all clients
+     ============================================ */
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      /* Font */
+      --font-family-base: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+      /* === CONTAINERS === */
+      --container-small:   40rem;   /* 640px  — blog text, narrow CTAs */
+      --container-default: 64rem;   /* 1024px — standard page content  */
+      --container-large:   80rem;   /* 1280px — wide heroes, full layouts */
+      --container-padding: 1.25rem; /* 20px   — left/right page padding */
+
+      /* === STRUCTURE — Section padding === */
+      --padding-section-small:  3rem;    /* 48px  — tight sections */
+      --padding-section-medium: 5rem;    /* 80px  — standard sections */
+      --padding-section-large:  7.5rem;  /* 120px — spacious hero sections */
+
+      /* === BORDER RADIUS === */
+      --radius-sm:   0.5rem;   /* 8px  */
+      --radius-md:   0.75rem;  /* 12px */
+      --radius-lg:   2.5rem;   /* 40px */
+      --radius-full: 9999px;   /* pill — kept in px intentionally */
+
+      /* === SPACING SCALE === */
+      --spacing-xs:  0.25rem;  /* 4px  */
+      --spacing-sm:  0.5rem;   /* 8px  */
+      --spacing-md:  1rem;     /* 16px */
+      --spacing-lg:  1.5rem;   /* 24px */
+      --spacing-xl:  2rem;     /* 32px */
+      --spacing-2xl: 3rem;     /* 48px */
+      --spacing-3xl: 4rem;     /* 64px */
+      --spacing-4xl: 5rem;     /* 80px */
+      --spacing-5xl: 7.5rem;   /* 120px */
+
+      /* === TYPOGRAPHY === */
+      --font-size-xs:   0.75rem;   /* 12px */
+      --font-size-sm:   0.875rem;  /* 14px — exception: kept as 0.875rem */
+      --font-size-base: 1rem;      /* 16px */
+      --font-size-lg:   1.125rem;  /* 18px */
+      --font-size-xl:   1.25rem;   /* 20px */
+      --font-size-2xl:  1.5rem;    /* 24px */
+      --font-size-3xl:  1.75rem;   /* 28px */
+      --font-size-4xl:  2rem;      /* 32px */
+      --font-size-5xl:  2.5rem;    /* 40px */
+      --font-size-6xl:  3rem;      /* 48px */
+      --font-size-7xl:  4rem;      /* 64px */
+      --font-size-8xl:  4.5rem;    /* 72px */
+
+      --font-weight-normal:    400;
+      --font-weight-medium:    500;
+      --font-weight-semibold:  600;
+      --font-weight-bold:      700;
+      --font-weight-extrabold: 800;
+
+      --line-height-tight:   1.2;
+      --line-height-snug:    1.35;
+      --line-height-normal:  1.5;
+      --line-height-relaxed: 1.6;
+
+      /* === SHADOWS — kept in px per Client-First convention === */
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+
+      /* === TRANSITIONS === */
+      --transition-fast: 150ms ease;
+      --transition-base: 200ms ease;
+      --transition-slow: 300ms ease;
+
+      /* === AUTO-GENERATED COLOR SHADES === */
+      --color-primary-50:  color-mix(in srgb, var(--color-primary) 5%,  white);
+      --color-primary-100: color-mix(in srgb, var(--color-primary) 10%, white);
+      --color-primary-200: color-mix(in srgb, var(--color-primary) 20%, white);
+      --color-primary-600: color-mix(in srgb, var(--color-primary) 90%, black 10%);
+      --color-primary-700: color-mix(in srgb, var(--color-primary) 80%, black 20%);
+      --color-primary-800: color-mix(in srgb, var(--color-primary) 70%, black 30%);
+      --color-primary-900: color-mix(in srgb, var(--color-primary) 50%, black 50%);
+      --color-primary-950: color-mix(in srgb, var(--color-primary) 15%, black 85%);
+
+      --color-secondary-50:  color-mix(in srgb, var(--color-secondary) 5%,  white);
+      --color-secondary-100: color-mix(in srgb, var(--color-secondary) 10%, white);
+      --color-secondary-600: color-mix(in srgb, var(--color-secondary) 90%, black 10%);
+      --color-secondary-700: color-mix(in srgb, var(--color-secondary) 80%, black 20%);
+
+      /* === SEMANTIC COLORS === */
+      --color-background: #ffffff;
+      --color-surface:    var(--color-primary-50);
+
+      --color-text:           color-mix(in srgb, var(--color-primary) 8%,  #1a1a1a);
+      --color-text-75:        color-mix(in srgb, var(--color-text) 75%, white);
+      --color-text-secondary: color-mix(in srgb, var(--color-primary) 6%,  #666666);
+      --color-text-muted:     color-mix(in srgb, var(--color-primary) 4%,  #999999);
+
+      --color-border:       var(--color-primary-200);
+      --color-border-light: var(--color-primary-100);
+
+      --color-btn-primary-bg:      var(--color-primary);
+      --color-btn-primary-text:    white;
+      --color-btn-primary-hover:   var(--color-primary-700);
+      --color-btn-secondary-bg:    var(--color-secondary);
+      --color-btn-secondary-text:  white;
+      --color-btn-secondary-hover: var(--color-secondary-700);
+
+      --color-card-bg:     #ffffff;
+      --color-card-border: var(--color-primary-100);
+    }
+
+    /* ============================================
+     BASE
+     ============================================ */
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      font-family: var(--font-family-base) !important;
+      font-weight: 400 !important;
+      color: var(--color-text);
+      line-height: var(--line-height-normal);
+      -webkit-font-smoothing: antialiased;
+      background-color: var(--color-background);
+    }
+
+    body, body * { font-weight: inherit; }
+    strong, b { font-weight: 700; }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-tight);
+      color: var(--color-text);
+      letter-spacing: -0.01em;
+    }
+    h1 { font-size: var(--font-size-6xl); }
+    h2 { font-size: var(--font-size-5xl); }
+    h3 { font-size: var(--font-size-4xl); }
+    h4 { font-size: var(--font-size-3xl); }
+    h5 { font-size: var(--font-size-2xl); }
+    h6 { font-size: var(--font-size-lg); line-height: 1.4; padding-top: 2px; }
+
+    p { margin: 0; font-size: var(--font-size-base); line-height: var(--line-height-relaxed); color: var(--color-text); }
+
+    ul, ol { margin: 0; padding-left: 1.5rem; }
+    ul li, ol li { margin-bottom: var(--spacing-sm); font-size: var(--font-size-base); line-height: var(--line-height-relaxed); }
+    ul li:last-child, ol li:last-child { margin-bottom: 0; }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    .list-none { list-style: none; padding-left: 0; }
+
+    .three-line-ellipsis {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ============================================
+     STRUCTURE — Page wrapper classes
+     ============================================ */
+
+    /* Outermost wrapper — wraps the entire page */
+    .page-wrapper {
+      overflow-x: hidden;
+    }
+
+    /* Main content area — use <main> tag, excludes nav and footer */
+    .main-wrapper {
+      width: 100%;
+    }
+
+    /* Section wrapper — use <section> tag, named per section */
+    /* Naming: section_[identifier] e.g. section_hero, section_testimonials */
+    /* No styles applied here — use padding-section-* and bg-* classes instead */
+
+    /* ============================================
+     STRUCTURE — Containers
+     ============================================ */
+    .container,
+    .container-default {
+      width: 100%;
+      max-width: var(--container-default);
+      margin-inline: auto;
+    }
+
+    .container-small {
+      width: 100%;
+      max-width: var(--container-small);
+      margin-inline: auto;
+    }
+
+    .container-large {
+      width: 100%;
+      max-width: var(--container-large);
+      margin-inline: auto;
+    }
+
+    /* ============================================
+     STRUCTURE — Padding global & section
+     ============================================ */
+
+    /* Horizontal page padding — apply to the div wrapping container-* */
+    .padding-global {
+      padding-left: var(--container-padding);
+      padding-right: var(--container-padding);
+    }
+
+    /* Vertical section padding — apply alongside padding-global */
+    .padding-section-small  { padding-top: var(--padding-section-small);  padding-bottom: var(--padding-section-small);  }
+    .padding-section-medium { padding-top: var(--padding-section-medium); padding-bottom: var(--padding-section-medium); }
+    .padding-section-large  { padding-top: var(--padding-section-large);  padding-bottom: var(--padding-section-large);  }
+
+    /* ============================================
+     LAYOUT UTILITIES
+     ============================================ */
+    .flex       { display: flex; }
+    .flex-col   { display: flex; flex-direction: column; }
+    .flex-center { display: flex; align-items: center; justify-content: center; }
+    .items-center  { align-items: center; }
+    .items-start   { align-items: flex-start; }
+    .items-end     { align-items: flex-end; }
+    .justify-center  { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .justify-start   { justify-content: flex-start; }
+    .justify-end     { justify-content: flex-end; }
+    .flex-shrink-0   { flex-shrink: 0; }
+    .flex-grow       { flex: 1; }
+
+    .gap-xs  { gap: var(--spacing-xs); }
+    .gap-sm  { gap: var(--spacing-sm); }
+    .gap-md  { gap: var(--spacing-md); }
+    .gap-lg  { gap: var(--spacing-lg); }
+    .gap-xl  { gap: var(--spacing-xl); }
+    .gap-2xl { gap: var(--spacing-2xl); }
+    .gap-3xl { gap: var(--spacing-3xl); }
+
+    .grid        { display: grid; }
+    .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .mx-auto    { margin-inline: auto; }
+    .w-full     { width: 100%; }
+    .h-full     { height: 100%; }
+    .text-center { text-align: center; }
+    .text-left   { text-align: left; }
+    .text-right  { text-align: right; }
+
+    .font-normal   { font-weight: var(--font-weight-normal)   !important; }
+    .font-medium   { font-weight: var(--font-weight-medium)   !important; }
+    .font-semibold { font-weight: var(--font-weight-semibold) !important; }
+    .font-bold     { font-weight: var(--font-weight-bold)     !important; }
+
+    /* ============================================
+     COLOR UTILITIES
+     ============================================ */
+    .bg-primary        { background-color: var(--color-primary);      color: white; }
+    .bg-primary-light  { background-color: var(--color-primary-100);  color: var(--color-text); }
+    .bg-primary-lighter { background-color: var(--color-primary-50);  color: var(--color-text); }
+    .bg-primary-dark   { background-color: var(--color-primary-900);  color: white; }
+    .bg-primary-darker { background-color: var(--color-primary-950);  color: white; }
+    .bg-secondary      { background-color: var(--color-secondary);    color: white; }
+    .bg-secondary-light { background-color: var(--color-secondary-100); color: var(--color-text); }
+    .bg-white          { background-color: #ffffff; }
+    .bg-surface        { background-color: var(--color-surface); }
+    .bg-grey-lighter   { background-color: color-mix(in srgb, var(--color-primary) 2%, white); color: var(--color-text); }
+    .bg-grey-light     { background-color: color-mix(in srgb, var(--color-primary) 4%, white); color: var(--color-text); }
+
+    .text-primary   { color: var(--color-primary); }
+    .text-secondary { color: var(--color-secondary); }
+    .text-75        { color: var(--color-text-75); }
+    .text-muted     { color: var(--color-text-muted); }
+    .text-white     { color: white; }
+    .text-light     { color: white; }
+    .text-light-75  { color: rgba(255, 255, 255, 0.75); }
+    .text-inherit   { color: inherit; }
+
+    /* ============================================
+     BORDERS
+     ============================================ */
+    .border         { border: 1px solid var(--color-border); }
+    .border-light   { border: 1px solid var(--color-border-light); }
+    .border-primary { border: 1px solid var(--color-primary); }
+    .border-t { border-top:    1px solid var(--color-border); }
+    .border-b { border-bottom: 1px solid var(--color-border); }
+    .border-l { border-left:   1px solid var(--color-border); }
+    .border-r { border-right:  1px solid var(--color-border); }
+
+    /* ============================================
+     BORDER RADIUS
+     ============================================ */
+    .rounded-sm   { border-radius: var(--radius-sm); }
+    .rounded-md   { border-radius: var(--radius-md); }
+    .rounded-lg   { border-radius: var(--radius-lg); }
+    .rounded-full { border-radius: var(--radius-full); }
+
+    /* ============================================
+     SHADOWS
+     ============================================ */
+    .shadow-sm   { box-shadow: var(--shadow-sm); }
+    .shadow-md   { box-shadow: var(--shadow-md); }
+    .shadow-lg   { box-shadow: var(--shadow-lg); }
+    .shadow-none { box-shadow: none; }
+
+    /* ============================================
+     BUTTONS
+     ============================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md) var(--spacing-lg);
+      border: none; border-radius: var(--radius-md);
+      font-family: var(--font-family-base);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-normal);
+      text-decoration: none; cursor: pointer;
+      transition: all var(--transition-base);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .btn:active { transform: translateY(1px); }
+
+    .btn-primary   { background-color: var(--color-btn-primary-bg);   color: var(--color-btn-primary-text); }
+    .btn-primary:hover { background-color: var(--color-btn-primary-hover); }
+    .btn-secondary { background-color: var(--color-btn-secondary-bg); color: var(--color-btn-secondary-text); }
+    .btn-secondary:hover { background-color: var(--color-btn-secondary-hover); }
+    .btn-outline {
+      background-color: transparent; color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+      padding: calc(var(--spacing-md) - 2px) calc(var(--spacing-lg) - 2px);
+    }
+    .btn-outline:hover { background-color: var(--color-primary); color: white; }
+    .btn-ghost { background-color: transparent; color: var(--color-primary); }
+    .btn-ghost:hover { background-color: var(--color-primary-100); }
+
+    .btn-sm { padding: var(--spacing-sm) var(--spacing-md); font-size: var(--font-size-sm); }
+    .btn-lg { padding: var(--spacing-lg) var(--spacing-xl); font-size: var(--font-size-lg); }
+
+    /* ============================================
+     CARDS
+     ============================================ */
+    .card          { background-color: var(--color-card-bg); border-radius: var(--radius-lg); padding: var(--spacing-xl); box-shadow: var(--shadow-md); }
+    .card-outlined { background-color: var(--color-card-bg); border: 1px solid var(--color-card-border); border-radius: var(--radius-lg); padding: var(--spacing-xl); }
+    .card-flat     { background-color: var(--color-surface); border-radius: var(--radius-lg); padding: var(--spacing-xl); }
+
+    /* Informational variant — no border radius, used for explanatory text blocks */
+    .card-flat.is-info { border-radius: var(--radius-sm); }
+
+    /* ============================================
+     BADGES
+     ============================================ */
+    .badge {
+      display: inline-flex; align-items: center;
+      padding: var(--spacing-xs) var(--spacing-md);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      background-color: var(--color-primary-100);
+      color: var(--color-primary);
+    }
+    .badge-secondary { background-color: var(--color-secondary-100); color: var(--color-secondary); }
+
+    /* ============================================
+     LINKS & MISC
+     ============================================ */
+    a { color: var(--color-primary); text-decoration: none; transition: opacity var(--transition-fast); }
+    a:hover { opacity: 0.8; }
+    a.link-underline { text-decoration: underline; text-underline-offset: 3px; }
+
+    svg, .droip-svg-icon { fill: currentColor; }
+
+    .divider { height: 1px; background-color: var(--color-border); border: none; margin: var(--spacing-lg) 0; }
+
+    /* ============================================
+     NAV BAR
+     ============================================ */
+    .nav-bar { display: flex; align-items: center; justify-content: space-between; background-color: var(--color-background); }
+    .nav-bar__logo { flex-shrink: 0; height: 40px; width: auto; }
+    .nav-bar a:not(.btn), .nav-bar__link {
+      color: var(--color-text) !important; text-decoration: none;
+      font-weight: var(--font-weight-medium); font-size: var(--font-size-base);
+      transition: opacity var(--transition-fast); white-space: nowrap;
+    }
+    .nav-bar a:not(.btn):hover, .nav-bar__link:hover { opacity: 0.7; }
+
+    /* ============================================
+     RESPONSIVE — breakpoints kept in px per spec
+     ============================================ */
+    @media (max-width: 1024px) {
+      :root {
+        --font-size-6xl: 2.5rem;  /* 40px */
+        --font-size-5xl: 2rem;    /* 32px */
+        --font-size-4xl: 1.75rem; /* 28px */
+      }
+      .grid-cols-3,
+      .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --container-padding: 1rem; /* 16px */
+        --font-size-6xl: 2rem;     /* 32px */
+        --font-size-5xl: 1.75rem;  /* 28px */
+        --font-size-4xl: 1.5rem;   /* 24px */
+      }
+      .grid-cols-2,
+      .grid-cols-3,
+      .grid-cols-4 { grid-template-columns: 1fr; }
+      .hide-below-768 { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --font-size-6xl: 1.875rem; /* 30px */
+        --font-size-5xl: 1.625rem; /* 26px */
+        --font-size-4xl: 1.375rem; /* 22px */
+      }
+      .hide-below-640 { display: none; }
+    }
+
+    /* ============================================
+     UTILITY
+     ============================================ */
+    .hidden        { display: none; }
+    .block         { display: block; }
+    .inline-block  { display: inline-block; }
+    .relative      { position: relative; }
+    .absolute      { position: absolute; }
+    .overflow-hidden { overflow: hidden; }
+    .pointer       { cursor: pointer; }
+    .p-0           { padding: 0; }
+
+    /* ============================================
+     CRITICAL OVERRIDES — must stay last
+     ============================================ */
+    body { font-weight: 400 !important; }
+    div, span, p, a, li, td, th, label, input, textarea, select, button { font-weight: 400 !important; }
+    h1, h2, h3, h4, h5, h6 { font-weight: 600 !important; }
+    strong, b, .font-bold  { font-weight: 700 !important; }
+    .btn, .btn *            { font-weight: 600 !important; }
+    .font-medium   { font-weight: 500 !important; }
+    .font-semibold { font-weight: 600 !important; }
+    ul, ol { padding-left: 1.5rem !important; }
+    ul { list-style-type: disc !important; }
+    ol { list-style-type: decimal !important; }
+    ul li, ol li { margin-bottom: 0.5rem !important; }
+
+    /* ============================================
+     STYLE GUIDE PAGE BRANDING
+     Overrides the placeholder --color-* variables
+     for this page's UI only — not part of the snippet
+     ============================================ */
+    :root {
+      --color-primary:     #009B60;
+      --color-secondary:   #012D20;
+    }
+
+    .sg-page { padding: 0; }
+
+    .sg-footer-bar {
+      background: var(--color-primary-950);
+    }
+
+    .sg-header {
+      background-color: var(--color-primary-950);
+      color: white;
+      padding: 3.75rem var(--container-padding);
+    }
+    .sg-header-inner { max-width: 64rem; margin-inline: auto; }
+    .sg-header h1    { color: white; font-size: var(--font-size-5xl); }
+    .sg-header p     { color: rgba(255,255,255,0.65); margin-top: 0.75rem; font-size: var(--font-size-lg); }
+
+    .sg-nav {
+      position: sticky; top: 0; z-index: 100;
+      background-color: white;
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 var(--container-padding);
+    }
+    .sg-nav-inner {
+      max-width: 64rem; margin-inline: auto;
+      display: flex; gap: 0; overflow-x: auto;
+    }
+    .sg-nav a {
+      display: block; padding: 0.875rem 1rem;
+      font-size: var(--font-size-sm); font-weight: 500 !important;
+      color: var(--color-text-secondary) !important;
+      white-space: nowrap; border-bottom: 2px solid transparent;
+      text-decoration: none; transition: all var(--transition-fast);
+    }
+    .sg-nav a:hover { color: var(--color-primary) !important; border-bottom-color: var(--color-primary); opacity: 1; }
+    .sg-nav a.active { color: var(--color-primary) !important; border-bottom-color: var(--color-primary); font-weight: 600 !important; opacity: 1; }
+
+    .sg-body { max-width: 64rem; margin-inline: auto; padding: 0 var(--container-padding) 5rem; }
+
+    .sg-section { padding-top: 4rem; }
+
+    .sg-section-title {
+      font-size: var(--font-size-xs); font-weight: 600 !important;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-primary); margin-bottom: 0.5rem;
+    }
+    .sg-section-heading { font-size: var(--font-size-3xl); font-weight: 700 !important; margin-bottom: 0.5rem; }
+    .sg-section-desc    { color: var(--color-text-secondary); margin-bottom: 2rem; font-size: var(--font-size-base); }
+
+    .sg-row {
+      display: grid; grid-template-columns: 280px 1fr;
+      gap: 1.5rem; padding: 1.75rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+      align-items: start;
+    }
+    .sg-row:last-child { border-bottom: none; }
+    .sg-label { padding-top: 2px; }
+
+    .sg-class {
+      font-family: 'Courier New', monospace;
+      font-size: var(--font-size-sm); font-weight: 600 !important;
+      color: var(--color-primary); background-color: var(--color-primary-50);
+      padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 6px;
+    }
+    .sg-desc { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 4px; }
+
+    /* Snippet copy block */
+    .sg-snippet-wrap { position: relative; }
+    .sg-snippet-code {
+      background: #0f172a; color: #94a3b8;
+      border-radius: 0.75rem; padding: 1.5rem;
+      font-family: 'Courier New', monospace; font-size: 0.8rem;
+      line-height: 1.7; overflow-x: auto; max-height: 320px;
+      overflow-y: auto; white-space: pre;
+    }
+    .sg-snippet-code .token-comment  { color: #475569; }
+    .sg-snippet-code .token-key      { color: #7dd3fc; }
+    .sg-snippet-code .token-value    { color: #86efac; }
+    .sg-snippet-code .token-punct    { color: #94a3b8; }
+    .sg-copy-btn {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: rgba(255,255,255,0.1); color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 0.5rem; padding: 0.375rem 0.75rem;
+      font-size: 0.75rem; font-weight: 600 !important;
+      cursor: pointer; transition: all var(--transition-fast);
+      font-family: var(--font-family-base);
+    }
+    .sg-copy-btn:hover { background: rgba(255,255,255,0.2); }
+    .sg-copy-btn.copied { background: #16a34a; border-color: #16a34a; color: white; }
+
+    /* Page structure diagram */
+    .sg-diagram {
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      background: var(--color-background);
+    }
+    .sg-diagram-layer {
+      border-radius: var(--radius-sm);
+      padding: 0.875rem 1rem;
+      margin-bottom: 0.375rem;
+      font-size: 0.8125rem;
+      font-weight: 600 !important;
+      font-family: 'Courier New', monospace;
+      border: 1px solid transparent;
+    }
+    .sg-diagram-layer:last-child { margin-bottom: 0; }
+    .sg-diagram-layer--link {
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+      transition: filter var(--transition-fast), transform var(--transition-fast);
+    }
+    .sg-diagram-layer--link:hover {
+      filter: brightness(1.12);
+      transform: translateX(3px);
+      opacity: 1;
+    }
+    .sg-diagram-layer--link .sg-diagram-label {
+      opacity: 0.75;
+    }
+    .sg-diagram-layer--link:hover .sg-diagram-label {
+      opacity: 1;
+    }
+    .sg-diagram-label {
+      font-size: 0.6875rem;
+      display: block;
+      margin-top: 3px;
+      font-weight: 400 !important;
+      font-family: var(--font-family-base);
+      opacity: 0.75;
+    }
+    .sg-diagram-indent-1 { margin-left: 1.25rem; }
+    .sg-diagram-indent-2 { margin-left: 2.5rem; }
+    .sg-diagram-indent-3 { margin-left: 3.75rem; }
+    .sg-diagram-indent-4 { margin-left: 5rem; }
+    .sg-diagram-indent-5 { margin-left: 6.25rem; }
+
+    /* Color swatches */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem; }
+    .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border-light); }
+    .swatch-color { height: 64px; }
+    .swatch-info  { padding: 0.625rem 0.75rem; background: white; }
+    .swatch-name  { font-size: var(--font-size-xs); font-weight: 600 !important; font-family: 'Courier New', monospace; color: var(--color-text); display: block; }
+    .swatch-value { font-size: var(--font-size-xs); color: var(--color-text-muted); display: block; margin-top: 2px; }
+
+    /* Spacing viz */
+    .spacing-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.625rem; }
+    .spacing-bar { background-color: var(--color-primary); height: 20px; border-radius: 3px; opacity: 0.8; }
+    .spacing-label { font-family: 'Courier New', monospace; font-size: var(--font-size-xs); color: var(--color-text-secondary); white-space: nowrap; min-width: 200px; }
+
+    /* Shadow demos */
+    .shadow-demo { background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+
+    /* Radius demos */
+    .radius-demo { background: var(--color-primary-100); width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xs); font-family: 'Courier New', monospace; color: var(--color-primary); font-weight: 600 !important; }
+
+    /* Type scale */
+    .type-row { display: flex; align-items: baseline; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--color-border-light); }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta { min-width: 160px; flex-shrink: 0; }
+    .type-meta .sg-class { margin-bottom: 0; }
+    .type-sample { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+    /* Container size viz */
+    .container-viz { background: var(--color-background); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 0.75rem; }
+    .container-viz-bar { height: 40px; border-radius: var(--radius-sm); display: flex; align-items: center; padding: 0 1rem; margin-bottom: 0.5rem; }
+    .container-viz-bar:last-child { margin-bottom: 0; }
+    .container-viz-label { font-family: 'Courier New', monospace; font-size: 0.75rem; font-weight: 600 !important; }
+
+    /* Section padding viz */
+    .pad-viz { display: flex; align-items: stretch; gap: 1rem; }
+    .pad-viz-block { display: flex; flex-direction: column; align-items: center; gap: 0; flex: 1; }
+    .pad-viz-spacer { background: color-mix(in srgb, var(--color-primary) 15%, white); width: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-family: 'Courier New', monospace; color: var(--color-primary); font-weight: 600 !important; border-radius: 4px; }
+    .pad-viz-content { background: var(--color-primary); width: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: white; font-weight: 600 !important; padding: 0.5rem; border-radius: 4px; }
+
+    @media (max-width: 768px) {
+      .sg-row { grid-template-columns: 1fr; gap: 1rem; }
+      .swatch-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+      .type-row { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body class="sg-page">
+
+  <div class="sg-header">
+    <div class="sg-header-inner">
+      <div class="badge" style="margin-bottom: 1rem; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8);">Design System</div>
+      <h1>Style Guide</h1>
+      <p>A living reference for every class in the shared CSS snippet. Change the two color variables at the top to rebrand for any client — this entire page updates automatically.</p>
+    </div>
+  </div>
+
+  <nav class="sg-nav">
+    <div class="sg-nav-inner">
+      <a href="#stylesheet">Stylesheet</a>
+      <a href="#page-structure">Page Structure</a>
+      <a href="#section-padding">Section Padding</a>
+      <a href="#containers">Containers</a>
+      <a href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#cards">Cards</a>
+      <a href="#badges">Badges</a>
+      <a href="#text-colors">Text Colors</a>
+      <a href="#backgrounds">Backgrounds</a>
+      <a href="#borders">Borders</a>
+      <a href="#layout">Layout</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#spacing-utilities">Spacing Utilities</a>
+      <a href="#radius">Radius</a>
+      <a href="#shadows">Shadows</a>
+    </div>
+  </nav>
+
+  <div class="sg-body">
+
+    <!-- ======================== STYLESHEET ======================== -->
+    <section class="sg-section" id="stylesheet">
+      <div class="sg-section-title">01</div>
+      <div class="sg-section-heading">The Stylesheet</div>
+      <p class="sg-section-desc">Paste this into the Custom CSS field of every page in Droip. Only the two color values at the top ever need to change per client. Everything else is automatic.</p>
+
+      <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        <div class="card-flat is-info" style="flex: 1; min-width: 200px; padding: 1.25rem;">
+          <div style="font-size: 0.75rem; font-weight: 600 !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary); margin-bottom: 0.5rem;">Step 1</div>
+          <p class="text-small">Copy the full stylesheet below using the copy button.</p>
+        </div>
+        <div class="card-flat is-info" style="flex: 1; min-width: 200px; padding: 1.25rem;">
+          <div style="font-size: 0.75rem; font-weight: 600 !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary); margin-bottom: 0.5rem;">Step 2</div>
+          <p class="text-small">In Droip, go to Page Settings → Custom Code → CSS and paste it in.</p>
+        </div>
+        <div class="card-flat is-info" style="flex: 1; min-width: 200px; padding: 1.25rem;">
+          <div style="font-size: 0.75rem; font-weight: 600 !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary); margin-bottom: 0.5rem;">Step 3</div>
+          <p class="text-small">Update <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">--color-primary</code> and <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">--color-secondary</code> for the client.</p>
+        </div>
+      </div>
+
+      <div class="sg-snippet-wrap">
+        <pre class="sg-snippet-code" id="snippetCode"><span class="token-comment">/* ============================================
+ 🎨 CLIENT COLORS - CHANGE THESE ONLY
+ ============================================
+ Update these 2 values for each client.
+ Everything else is auto-generated.
+ ============================================ */</span>
+<span class="token-punct">:root {</span>
+  <span class="token-key">--color-primary</span><span class="token-punct">:</span>   <span class="token-value">#017fd0</span><span class="token-punct">;</span>
+  <span class="token-key">--color-secondary</span><span class="token-punct">:</span> <span class="token-value">#012d20</span><span class="token-punct">;</span>
+  <span class="token-comment">/* Optional: uncomment to override font */</span>
+  <span class="token-comment">/* --font-family-base: 'YourFont', system-ui, sans-serif; */</span>
+<span class="token-punct">}</span>
+
+<span class="token-comment">/* ============================================
+ ⚠️  DO NOT EDIT BELOW THIS LINE
+ Core styles — same for all clients
+ ============================================ */</span>
+
+<span class="token-value">@import</span> <span class="token-punct">url(</span><span class="token-value">'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap'</span><span class="token-punct">);</span>
+
+<span class="token-punct">:root {</span>
+  <span class="token-key">--font-family-base</span><span class="token-punct">:</span> <span class="token-value">'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif</span><span class="token-punct">;</span>
+
+  <span class="token-comment">/* === CONTAINERS === */</span>
+  <span class="token-key">--container-small</span><span class="token-punct">:</span>   <span class="token-value">40rem</span><span class="token-punct">;</span>   <span class="token-comment">/* 640px  — blog text, narrow CTAs */</span>
+  <span class="token-key">--container-default</span><span class="token-punct">:</span> <span class="token-value">64rem</span><span class="token-punct">;</span>   <span class="token-comment">/* 1024px — standard page content  */</span>
+  <span class="token-key">--container-large</span><span class="token-punct">:</span>   <span class="token-value">80rem</span><span class="token-punct">;</span>   <span class="token-comment">/* 1280px — wide heroes, full layouts */</span>
+  <span class="token-key">--container-padding</span><span class="token-punct">:</span> <span class="token-value">1.25rem</span><span class="token-punct">;</span> <span class="token-comment">/* 20px   — left/right page padding */</span>
+
+  <span class="token-comment">/* === SECTION PADDING === */</span>
+  <span class="token-key">--padding-section-small</span><span class="token-punct">:</span>  <span class="token-value">3rem</span><span class="token-punct">;</span>   <span class="token-comment">/* 48px  */</span>
+  <span class="token-key">--padding-section-medium</span><span class="token-punct">:</span> <span class="token-value">5rem</span><span class="token-punct">;</span>   <span class="token-comment">/* 80px  */</span>
+  <span class="token-key">--padding-section-large</span><span class="token-punct">:</span>  <span class="token-value">7.5rem</span><span class="token-punct">;</span> <span class="token-comment">/* 120px */</span>
+
+  <span class="token-comment">/* === BORDER RADIUS === */</span>
+  <span class="token-key">--radius-sm</span><span class="token-punct">:</span>   <span class="token-value">0.5rem</span><span class="token-punct">;</span>
+  <span class="token-key">--radius-md</span><span class="token-punct">:</span>   <span class="token-value">0.75rem</span><span class="token-punct">;</span>
+  <span class="token-key">--radius-lg</span><span class="token-punct">:</span>   <span class="token-value">2.5rem</span><span class="token-punct">;</span>
+  <span class="token-key">--radius-full</span><span class="token-punct">:</span> <span class="token-value">9999px</span><span class="token-punct">;</span> <span class="token-comment">/* kept in px — no rem equivalent for pill */</span>
+
+  <span class="token-comment">/* === SPACING SCALE === */</span>
+  <span class="token-key">--spacing-xs</span><span class="token-punct">:</span>  <span class="token-value">0.25rem</span><span class="token-punct">;</span>
+  <span class="token-key">--spacing-sm</span><span class="token-punct">:</span>  <span class="token-value">0.5rem</span><span class="token-punct">;</span>
+  <span class="token-key">--spacing-md</span><span class="token-punct">:</span>  <span class="token-value">1rem</span><span class="token-punct">;</span>
+  <span class="token-key">--spacing-lg</span><span class="token-punct">:</span>  <span class="token-value">1.5rem</span><span class="token-punct">;</span>
+  <span class="token-key">--spacing-xl</span><span class="token-punct">:</span>  <span class="token-value">2rem</span><span class="token-punct">;</span>
+  <span class="token-key">--spacing-2xl</span><span class="token-punct">:</span> <span class="token-value">3rem</span><span class="token-punct">;</span>
+  <span class="token-key">--spacing-3xl</span><span class="token-punct">:</span> <span class="token-value">4rem</span><span class="token-punct">;</span>
+  <span class="token-key">--spacing-4xl</span><span class="token-punct">:</span> <span class="token-value">5rem</span><span class="token-punct">;</span>
+  <span class="token-key">--spacing-5xl</span><span class="token-punct">:</span> <span class="token-value">7.5rem</span><span class="token-punct">;</span>
+
+  <span class="token-comment">/* === TYPOGRAPHY === */</span>
+  <span class="token-key">--font-size-xs</span><span class="token-punct">:</span>   <span class="token-value">0.75rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-sm</span><span class="token-punct">:</span>   <span class="token-value">0.875rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-base</span><span class="token-punct">:</span> <span class="token-value">1rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-lg</span><span class="token-punct">:</span>   <span class="token-value">1.125rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-xl</span><span class="token-punct">:</span>   <span class="token-value">1.25rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-2xl</span><span class="token-punct">:</span>  <span class="token-value">1.5rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-3xl</span><span class="token-punct">:</span>  <span class="token-value">1.75rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-4xl</span><span class="token-punct">:</span>  <span class="token-value">2rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-5xl</span><span class="token-punct">:</span>  <span class="token-value">2.5rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-6xl</span><span class="token-punct">:</span>  <span class="token-value">3rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-7xl</span><span class="token-punct">:</span>  <span class="token-value">4rem</span><span class="token-punct">;</span>
+  <span class="token-key">--font-size-8xl</span><span class="token-punct">:</span>  <span class="token-value">4.5rem</span><span class="token-punct">;</span>
+
+  <span class="token-key">--font-weight-normal</span><span class="token-punct">:</span>    <span class="token-value">400</span><span class="token-punct">;</span>
+  <span class="token-key">--font-weight-medium</span><span class="token-punct">:</span>    <span class="token-value">500</span><span class="token-punct">;</span>
+  <span class="token-key">--font-weight-semibold</span><span class="token-punct">:</span>  <span class="token-value">600</span><span class="token-punct">;</span>
+  <span class="token-key">--font-weight-bold</span><span class="token-punct">:</span>      <span class="token-value">700</span><span class="token-punct">;</span>
+  <span class="token-key">--font-weight-extrabold</span><span class="token-punct">:</span> <span class="token-value">800</span><span class="token-punct">;</span>
+
+  <span class="token-key">--line-height-tight</span><span class="token-punct">:</span>   <span class="token-value">1.2</span><span class="token-punct">;</span>
+  <span class="token-key">--line-height-snug</span><span class="token-punct">:</span>    <span class="token-value">1.35</span><span class="token-punct">;</span>
+  <span class="token-key">--line-height-normal</span><span class="token-punct">:</span>  <span class="token-value">1.5</span><span class="token-punct">;</span>
+  <span class="token-key">--line-height-relaxed</span><span class="token-punct">:</span> <span class="token-value">1.6</span><span class="token-punct">;</span>
+
+  <span class="token-comment">/* === SHADOWS — kept in px per convention === */</span>
+  <span class="token-key">--shadow-sm</span><span class="token-punct">:</span> <span class="token-value">0 1px 2px rgba(0, 0, 0, 0.06)</span><span class="token-punct">;</span>
+  <span class="token-key">--shadow-md</span><span class="token-punct">:</span> <span class="token-value">0 6px 24px rgba(0, 0, 0, 0.08)</span><span class="token-punct">;</span>
+  <span class="token-key">--shadow-lg</span><span class="token-punct">:</span> <span class="token-value">0 10px 40px rgba(0, 0, 0, 0.12)</span><span class="token-punct">;</span>
+
+  <span class="token-comment">/* === TRANSITIONS === */</span>
+  <span class="token-key">--transition-fast</span><span class="token-punct">:</span> <span class="token-value">150ms ease</span><span class="token-punct">;</span>
+  <span class="token-key">--transition-base</span><span class="token-punct">:</span> <span class="token-value">200ms ease</span><span class="token-punct">;</span>
+  <span class="token-key">--transition-slow</span><span class="token-punct">:</span> <span class="token-value">300ms ease</span><span class="token-punct">;</span>
+
+  <span class="token-comment">/* === AUTO-GENERATED COLOR SHADES === */</span>
+  <span class="token-key">--color-primary-50</span><span class="token-punct">:</span>  <span class="token-value">color-mix(in srgb, var(--color-primary) 5%,  white)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-primary-100</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 10%, white)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-primary-200</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 20%, white)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-primary-600</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 90%, black 10%)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-primary-700</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 80%, black 20%)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-primary-800</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 70%, black 30%)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-primary-900</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 50%, black 50%)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-primary-950</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 15%, black 85%)</span><span class="token-punct">;</span>
+
+  <span class="token-key">--color-secondary-50</span><span class="token-punct">:</span>  <span class="token-value">color-mix(in srgb, var(--color-secondary) 5%,  white)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-secondary-100</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-secondary) 10%, white)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-secondary-600</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-secondary) 90%, black 10%)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-secondary-700</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-secondary) 80%, black 20%)</span><span class="token-punct">;</span>
+
+  <span class="token-comment">/* === SEMANTIC COLORS === */</span>
+  <span class="token-key">--color-background</span><span class="token-punct">:</span> <span class="token-value">#ffffff</span><span class="token-punct">;</span>
+  <span class="token-key">--color-surface</span><span class="token-punct">:</span>    <span class="token-value">var(--color-primary-50)</span><span class="token-punct">;</span>
+
+  <span class="token-key">--color-text</span><span class="token-punct">:</span>           <span class="token-value">color-mix(in srgb, var(--color-primary) 8%,  #1a1a1a)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-text-75</span><span class="token-punct">:</span>        <span class="token-value">color-mix(in srgb, var(--color-text) 75%, white)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-text-secondary</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 6%,  #666666)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-text-muted</span><span class="token-punct">:</span>     <span class="token-value">color-mix(in srgb, var(--color-primary) 4%,  #999999)</span><span class="token-punct">;</span>
+
+  <span class="token-key">--color-border</span><span class="token-punct">:</span>       <span class="token-value">var(--color-primary-200)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-border-light</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary-100)</span><span class="token-punct">;</span>
+
+  <span class="token-key">--color-btn-primary-bg</span><span class="token-punct">:</span>      <span class="token-value">var(--color-primary)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-btn-primary-text</span><span class="token-punct">:</span>    <span class="token-value">white</span><span class="token-punct">;</span>
+  <span class="token-key">--color-btn-primary-hover</span><span class="token-punct">:</span>   <span class="token-value">var(--color-primary-700)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-btn-secondary-bg</span><span class="token-punct">:</span>    <span class="token-value">var(--color-secondary)</span><span class="token-punct">;</span>
+  <span class="token-key">--color-btn-secondary-text</span><span class="token-punct">:</span>  <span class="token-value">white</span><span class="token-punct">;</span>
+  <span class="token-key">--color-btn-secondary-hover</span><span class="token-punct">:</span> <span class="token-value">var(--color-secondary-700)</span><span class="token-punct">;</span>
+
+  <span class="token-key">--color-card-bg</span><span class="token-punct">:</span>     <span class="token-value">#ffffff</span><span class="token-punct">;</span>
+  <span class="token-key">--color-card-border</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary-100)</span><span class="token-punct">;</span>
+<span class="token-punct">}</span>
+
+<span class="token-comment">/* BASE */</span>
+<span class="token-value">*</span> <span class="token-punct">{ box-sizing: border-box; }</span>
+<span class="token-value">html, body</span> <span class="token-punct">{</span>
+  <span class="token-key">margin</span><span class="token-punct">:</span> <span class="token-value">0</span><span class="token-punct">;</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">0</span><span class="token-punct">;</span>
+  <span class="token-key">font-family</span><span class="token-punct">:</span> <span class="token-value">var(--font-family-base)</span><span class="token-punct"> !important;</span>
+  <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">400</span><span class="token-punct"> !important;</span>
+  <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-text)</span><span class="token-punct">;</span>
+  <span class="token-key">line-height</span><span class="token-punct">:</span> <span class="token-value">var(--line-height-normal)</span><span class="token-punct">;</span>
+  <span class="token-key">-webkit-font-smoothing</span><span class="token-punct">:</span> <span class="token-value">antialiased</span><span class="token-punct">;</span>
+  <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-background)</span><span class="token-punct">;</span>
+<span class="token-punct">}</span>
+<span class="token-value">h1</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-6xl)</span><span class="token-punct">; }</span>
+<span class="token-value">h2</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-5xl)</span><span class="token-punct">; }</span>
+<span class="token-value">h3</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-4xl)</span><span class="token-punct">; }</span>
+<span class="token-value">h4</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-3xl)</span><span class="token-punct">; }</span>
+<span class="token-value">h5</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-2xl)</span><span class="token-punct">; }</span>
+<span class="token-value">h6</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-lg)</span><span class="token-punct">; }</span>
+<span class="token-value">p</span>  <span class="token-punct">{</span> <span class="token-key">margin</span><span class="token-punct">:</span> <span class="token-value">0</span><span class="token-punct">;</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-base)</span><span class="token-punct">;</span> <span class="token-key">line-height</span><span class="token-punct">:</span> <span class="token-value">var(--line-height-relaxed)</span><span class="token-punct">; }</span>
+<span class="token-value">ul, ol</span> <span class="token-punct">{</span> <span class="token-key">margin</span><span class="token-punct">:</span> <span class="token-value">0</span><span class="token-punct">;</span> <span class="token-key">padding-left</span><span class="token-punct">:</span> <span class="token-value">1.5rem</span><span class="token-punct">; }</span>
+
+<span class="token-comment">/* STRUCTURE */</span>
+<span class="token-value">.page-wrapper</span>  <span class="token-punct">{</span> <span class="token-key">overflow-x</span><span class="token-punct">:</span> <span class="token-value">hidden</span><span class="token-punct">; }</span>
+<span class="token-value">.main-wrapper</span>  <span class="token-punct">{</span> <span class="token-key">width</span><span class="token-punct">:</span> <span class="token-value">100%</span><span class="token-punct">; }</span>
+<span class="token-value">.container, .container-default</span> <span class="token-punct">{</span> <span class="token-key">width</span><span class="token-punct">:</span> <span class="token-value">100%</span><span class="token-punct">;</span> <span class="token-key">max-width</span><span class="token-punct">:</span> <span class="token-value">var(--container-default)</span><span class="token-punct">;</span> <span class="token-key">margin-inline</span><span class="token-punct">:</span> <span class="token-value">auto</span><span class="token-punct">; }</span>
+<span class="token-value">.container-small</span>               <span class="token-punct">{</span> <span class="token-key">width</span><span class="token-punct">:</span> <span class="token-value">100%</span><span class="token-punct">;</span> <span class="token-key">max-width</span><span class="token-punct">:</span> <span class="token-value">var(--container-small)</span><span class="token-punct">;</span>   <span class="token-key">margin-inline</span><span class="token-punct">:</span> <span class="token-value">auto</span><span class="token-punct">; }</span>
+<span class="token-value">.container-large</span>               <span class="token-punct">{</span> <span class="token-key">width</span><span class="token-punct">:</span> <span class="token-value">100%</span><span class="token-punct">;</span> <span class="token-key">max-width</span><span class="token-punct">:</span> <span class="token-value">var(--container-large)</span><span class="token-punct">;</span>   <span class="token-key">margin-inline</span><span class="token-punct">:</span> <span class="token-value">auto</span><span class="token-punct">; }</span>
+<span class="token-value">.padding-global</span>         <span class="token-punct">{</span> <span class="token-key">padding-left</span><span class="token-punct">:</span> <span class="token-value">var(--container-padding)</span><span class="token-punct">;</span> <span class="token-key">padding-right</span><span class="token-punct">:</span> <span class="token-value">var(--container-padding)</span><span class="token-punct">; }</span>
+<span class="token-value">.padding-section-small</span>  <span class="token-punct">{</span> <span class="token-key">padding-top</span><span class="token-punct">:</span> <span class="token-value">var(--padding-section-small)</span><span class="token-punct">;</span>  <span class="token-key">padding-bottom</span><span class="token-punct">:</span> <span class="token-value">var(--padding-section-small)</span><span class="token-punct">;  }</span>
+<span class="token-value">.padding-section-medium</span> <span class="token-punct">{</span> <span class="token-key">padding-top</span><span class="token-punct">:</span> <span class="token-value">var(--padding-section-medium)</span><span class="token-punct">;</span> <span class="token-key">padding-bottom</span><span class="token-punct">:</span> <span class="token-value">var(--padding-section-medium)</span><span class="token-punct">; }</span>
+<span class="token-value">.padding-section-large</span>  <span class="token-punct">{</span> <span class="token-key">padding-top</span><span class="token-punct">:</span> <span class="token-value">var(--padding-section-large)</span><span class="token-punct">;</span>  <span class="token-key">padding-bottom</span><span class="token-punct">:</span> <span class="token-value">var(--padding-section-large)</span><span class="token-punct">;  }</span>
+
+<span class="token-comment">/* LAYOUT */</span>
+<span class="token-value">.flex</span>         <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">flex</span><span class="token-punct">; }</span>
+<span class="token-value">.flex-col</span>     <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">flex</span><span class="token-punct">;</span> <span class="token-key">flex-direction</span><span class="token-punct">:</span> <span class="token-value">column</span><span class="token-punct">; }</span>
+<span class="token-value">.flex-center</span>  <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">flex</span><span class="token-punct">;</span> <span class="token-key">align-items</span><span class="token-punct">:</span> <span class="token-value">center</span><span class="token-punct">;</span> <span class="token-key">justify-content</span><span class="token-punct">:</span> <span class="token-value">center</span><span class="token-punct">; }</span>
+<span class="token-value">.items-center</span>    <span class="token-punct">{</span> <span class="token-key">align-items</span><span class="token-punct">:</span> <span class="token-value">center</span><span class="token-punct">; }</span>
+<span class="token-value">.items-start</span>     <span class="token-punct">{</span> <span class="token-key">align-items</span><span class="token-punct">:</span> <span class="token-value">flex-start</span><span class="token-punct">; }</span>
+<span class="token-value">.items-end</span>       <span class="token-punct">{</span> <span class="token-key">align-items</span><span class="token-punct">:</span> <span class="token-value">flex-end</span><span class="token-punct">; }</span>
+<span class="token-value">.justify-center</span>  <span class="token-punct">{</span> <span class="token-key">justify-content</span><span class="token-punct">:</span> <span class="token-value">center</span><span class="token-punct">; }</span>
+<span class="token-value">.justify-between</span> <span class="token-punct">{</span> <span class="token-key">justify-content</span><span class="token-punct">:</span> <span class="token-value">space-between</span><span class="token-punct">; }</span>
+<span class="token-value">.justify-start</span>   <span class="token-punct">{</span> <span class="token-key">justify-content</span><span class="token-punct">:</span> <span class="token-value">flex-start</span><span class="token-punct">; }</span>
+<span class="token-value">.justify-end</span>     <span class="token-punct">{</span> <span class="token-key">justify-content</span><span class="token-punct">:</span> <span class="token-value">flex-end</span><span class="token-punct">; }</span>
+<span class="token-value">.flex-shrink-0</span>   <span class="token-punct">{</span> <span class="token-key">flex-shrink</span><span class="token-punct">:</span> <span class="token-value">0</span><span class="token-punct">; }</span>
+<span class="token-value">.flex-grow</span>       <span class="token-punct">{</span> <span class="token-key">flex</span><span class="token-punct">:</span> <span class="token-value">1</span><span class="token-punct">; }</span>
+<span class="token-value">.gap-xs</span>  <span class="token-punct">{</span> <span class="token-key">gap</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-xs)</span><span class="token-punct">; }</span>
+<span class="token-value">.gap-sm</span>  <span class="token-punct">{</span> <span class="token-key">gap</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-sm)</span><span class="token-punct">; }</span>
+<span class="token-value">.gap-md</span>  <span class="token-punct">{</span> <span class="token-key">gap</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-md)</span><span class="token-punct">; }</span>
+<span class="token-value">.gap-lg</span>  <span class="token-punct">{</span> <span class="token-key">gap</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-lg)</span><span class="token-punct">; }</span>
+<span class="token-value">.gap-xl</span>  <span class="token-punct">{</span> <span class="token-key">gap</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-xl)</span><span class="token-punct">; }</span>
+<span class="token-value">.gap-2xl</span> <span class="token-punct">{</span> <span class="token-key">gap</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-2xl)</span><span class="token-punct">; }</span>
+<span class="token-value">.gap-3xl</span> <span class="token-punct">{</span> <span class="token-key">gap</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-3xl)</span><span class="token-punct">; }</span>
+<span class="token-value">.grid</span>        <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">grid</span><span class="token-punct">; }</span>
+<span class="token-value">.grid-cols-2</span> <span class="token-punct">{</span> <span class="token-key">grid-template-columns</span><span class="token-punct">:</span> <span class="token-value">repeat(2, 1fr)</span><span class="token-punct">; }</span>
+<span class="token-value">.grid-cols-3</span> <span class="token-punct">{</span> <span class="token-key">grid-template-columns</span><span class="token-punct">:</span> <span class="token-value">repeat(3, 1fr)</span><span class="token-punct">; }</span>
+<span class="token-value">.grid-cols-4</span> <span class="token-punct">{</span> <span class="token-key">grid-template-columns</span><span class="token-punct">:</span> <span class="token-value">repeat(4, 1fr)</span><span class="token-punct">; }</span>
+<span class="token-value">.mx-auto</span>      <span class="token-punct">{</span> <span class="token-key">margin-inline</span><span class="token-punct">:</span> <span class="token-value">auto</span><span class="token-punct">; }</span>
+<span class="token-value">.w-full</span>       <span class="token-punct">{</span> <span class="token-key">width</span><span class="token-punct">:</span> <span class="token-value">100%</span><span class="token-punct">; }</span>
+<span class="token-value">.text-center</span>  <span class="token-punct">{</span> <span class="token-key">text-align</span><span class="token-punct">:</span> <span class="token-value">center</span><span class="token-punct">; }</span>
+<span class="token-value">.text-left</span>    <span class="token-punct">{</span> <span class="token-key">text-align</span><span class="token-punct">:</span> <span class="token-value">left</span><span class="token-punct">; }</span>
+<span class="token-value">.text-right</span>   <span class="token-punct">{</span> <span class="token-key">text-align</span><span class="token-punct">:</span> <span class="token-value">right</span><span class="token-punct">; }</span>
+<span class="token-value">.font-normal</span>   <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">var(--font-weight-normal)</span>   <span class="token-punct">!important; }</span>
+<span class="token-value">.font-medium</span>   <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">var(--font-weight-medium)</span>   <span class="token-punct">!important; }</span>
+<span class="token-value">.font-semibold</span> <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">var(--font-weight-semibold)</span> <span class="token-punct">!important; }</span>
+<span class="token-value">.font-bold</span>     <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">var(--font-weight-bold)</span>     <span class="token-punct">!important; }</span>
+
+<span class="token-comment">/* COLORS */</span>
+<span class="token-value">.bg-primary</span>         <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary)</span><span class="token-punct">;</span>      <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">white</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-primary-light</span>   <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary-100)</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-primary-lighter</span> <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary-50)</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-primary-dark</span>    <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary-900)</span><span class="token-punct">;</span>  <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">white</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-primary-darker</span>  <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary-950)</span><span class="token-punct">;</span>  <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">white</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-secondary</span>       <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-secondary)</span><span class="token-punct">;</span>    <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">white</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-secondary-light</span> <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-secondary-100)</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-white</span>           <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">#ffffff</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-surface</span>         <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-surface)</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-grey-lighter</span>    <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 2%, white)</span><span class="token-punct">; }</span>
+<span class="token-value">.bg-grey-light</span>      <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">color-mix(in srgb, var(--color-primary) 4%, white)</span><span class="token-punct">; }</span>
+<span class="token-value">.text-primary</span>   <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary)</span><span class="token-punct">; }</span>
+<span class="token-value">.text-secondary</span> <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-secondary)</span><span class="token-punct">; }</span>
+<span class="token-value">.text-75</span>        <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-text-75)</span><span class="token-punct">; }</span>
+<span class="token-value">.text-muted</span>     <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-text-muted)</span><span class="token-punct">; }</span>
+<span class="token-value">.text-white</span>     <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">white</span><span class="token-punct">; }</span>
+<span class="token-value">.text-light</span>     <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">white</span><span class="token-punct">; }</span>
+<span class="token-value">.text-light-75</span>  <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">rgba(255, 255, 255, 0.75)</span><span class="token-punct">; }</span>
+<span class="token-value">.text-inherit</span>   <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">inherit</span><span class="token-punct">; }</span>
+
+<span class="token-comment">/* BORDERS — 1px kept in px */</span>
+<span class="token-value">.border</span>         <span class="token-punct">{</span> <span class="token-key">border</span><span class="token-punct">:</span>        <span class="token-value">1px solid var(--color-border)</span><span class="token-punct">; }</span>
+<span class="token-value">.border-light</span>   <span class="token-punct">{</span> <span class="token-key">border</span><span class="token-punct">:</span>        <span class="token-value">1px solid var(--color-border-light)</span><span class="token-punct">; }</span>
+<span class="token-value">.border-primary</span> <span class="token-punct">{</span> <span class="token-key">border</span><span class="token-punct">:</span>        <span class="token-value">1px solid var(--color-primary)</span><span class="token-punct">; }</span>
+<span class="token-value">.border-t</span>       <span class="token-punct">{</span> <span class="token-key">border-top</span><span class="token-punct">:</span>    <span class="token-value">1px solid var(--color-border)</span><span class="token-punct">; }</span>
+<span class="token-value">.border-b</span>       <span class="token-punct">{</span> <span class="token-key">border-bottom</span><span class="token-punct">:</span> <span class="token-value">1px solid var(--color-border)</span><span class="token-punct">; }</span>
+<span class="token-value">.border-l</span>       <span class="token-punct">{</span> <span class="token-key">border-left</span><span class="token-punct">:</span>   <span class="token-value">1px solid var(--color-border)</span><span class="token-punct">; }</span>
+<span class="token-value">.border-r</span>       <span class="token-punct">{</span> <span class="token-key">border-right</span><span class="token-punct">:</span>  <span class="token-value">1px solid var(--color-border)</span><span class="token-punct">; }</span>
+<span class="token-value">.rounded-sm</span>   <span class="token-punct">{</span> <span class="token-key">border-radius</span><span class="token-punct">:</span> <span class="token-value">var(--radius-sm)</span><span class="token-punct">; }</span>
+<span class="token-value">.rounded-md</span>   <span class="token-punct">{</span> <span class="token-key">border-radius</span><span class="token-punct">:</span> <span class="token-value">var(--radius-md)</span><span class="token-punct">; }</span>
+<span class="token-value">.rounded-lg</span>   <span class="token-punct">{</span> <span class="token-key">border-radius</span><span class="token-punct">:</span> <span class="token-value">var(--radius-lg)</span><span class="token-punct">; }</span>
+<span class="token-value">.rounded-full</span> <span class="token-punct">{</span> <span class="token-key">border-radius</span><span class="token-punct">:</span> <span class="token-value">var(--radius-full)</span><span class="token-punct">; }</span>
+<span class="token-value">.shadow-sm</span>   <span class="token-punct">{</span> <span class="token-key">box-shadow</span><span class="token-punct">:</span> <span class="token-value">var(--shadow-sm)</span><span class="token-punct">; }</span>
+<span class="token-value">.shadow-md</span>   <span class="token-punct">{</span> <span class="token-key">box-shadow</span><span class="token-punct">:</span> <span class="token-value">var(--shadow-md)</span><span class="token-punct">; }</span>
+<span class="token-value">.shadow-lg</span>   <span class="token-punct">{</span> <span class="token-key">box-shadow</span><span class="token-punct">:</span> <span class="token-value">var(--shadow-lg)</span><span class="token-punct">; }</span>
+<span class="token-value">.shadow-none</span> <span class="token-punct">{</span> <span class="token-key">box-shadow</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">; }</span>
+
+<span class="token-comment">/* BUTTONS */</span>
+<span class="token-value">.btn</span> <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">inline-flex</span><span class="token-punct">;</span> <span class="token-key">align-items</span><span class="token-punct">:</span> <span class="token-value">center</span><span class="token-punct">;</span> <span class="token-key">justify-content</span><span class="token-punct">:</span> <span class="token-value">center</span><span class="token-punct">;</span> <span class="token-key">gap</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-sm)</span><span class="token-punct">;</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-md) var(--spacing-lg)</span><span class="token-punct">;</span> <span class="token-key">border</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">;</span> <span class="token-key">border-radius</span><span class="token-punct">:</span> <span class="token-value">var(--radius-md)</span><span class="token-punct">;</span> <span class="token-key">font-family</span><span class="token-punct">:</span> <span class="token-value">var(--font-family-base)</span><span class="token-punct">;</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-base)</span><span class="token-punct">;</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">var(--font-weight-semibold)</span><span class="token-punct">;</span> <span class="token-key">text-decoration</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">;</span> <span class="token-key">cursor</span><span class="token-punct">:</span> <span class="token-value">pointer</span><span class="token-punct">;</span> <span class="token-key">transition</span><span class="token-punct">:</span> <span class="token-value">all var(--transition-base)</span><span class="token-punct">;</span> <span class="token-key">white-space</span><span class="token-punct">:</span> <span class="token-value">nowrap</span><span class="token-punct">;</span> <span class="token-key">flex-shrink</span><span class="token-punct">:</span> <span class="token-value">0</span><span class="token-punct">; }</span>
+<span class="token-value">.btn:active</span>        <span class="token-punct">{</span> <span class="token-key">transform</span><span class="token-punct">:</span> <span class="token-value">translateY(1px)</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-primary</span>       <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-btn-primary-bg)</span><span class="token-punct">;</span>   <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-btn-primary-text)</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-primary:hover</span> <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-btn-primary-hover)</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-secondary</span>       <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-btn-secondary-bg)</span><span class="token-punct">;</span>  <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-btn-secondary-text)</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-secondary:hover</span> <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-btn-secondary-hover)</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-outline</span>       <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">transparent</span><span class="token-punct">;</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary)</span><span class="token-punct">;</span> <span class="token-key">border</span><span class="token-punct">:</span> <span class="token-value">2px solid var(--color-primary)</span><span class="token-punct">;</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">calc(var(--spacing-md) - 2px) calc(var(--spacing-lg) - 2px)</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-outline:hover</span> <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary)</span><span class="token-punct">;</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">white</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-ghost</span>         <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">transparent</span><span class="token-punct">;</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary)</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-ghost:hover</span>   <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary-100)</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-sm</span> <span class="token-punct">{</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-sm) var(--spacing-md)</span><span class="token-punct">;</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-sm)</span><span class="token-punct">; }</span>
+<span class="token-value">.btn-lg</span> <span class="token-punct">{</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-lg) var(--spacing-xl)</span><span class="token-punct">;</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-lg)</span><span class="token-punct">; }</span>
+
+<span class="token-comment">/* CARDS */</span>
+<span class="token-value">.card</span>          <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-card-bg)</span><span class="token-punct">;</span> <span class="token-key">border-radius</span><span class="token-punct">:</span> <span class="token-value">var(--radius-lg)</span><span class="token-punct">;</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-xl)</span><span class="token-punct">;</span> <span class="token-key">box-shadow</span><span class="token-punct">:</span> <span class="token-value">var(--shadow-md)</span><span class="token-punct">; }</span>
+<span class="token-value">.card-outlined</span> <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-card-bg)</span><span class="token-punct">;</span> <span class="token-key">border</span><span class="token-punct">:</span> <span class="token-value">1px solid var(--color-card-border)</span><span class="token-punct">;</span> <span class="token-key">border-radius</span><span class="token-punct">:</span> <span class="token-value">var(--radius-lg)</span><span class="token-punct">;</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-xl)</span><span class="token-punct">; }</span>
+<span class="token-value">.card-flat</span>     <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-surface)</span><span class="token-punct">;</span>    <span class="token-key">border-radius</span><span class="token-punct">:</span> <span class="token-value">var(--radius-lg)</span><span class="token-punct">;</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-xl)</span><span class="token-punct">; }</span>
+
+<span class="token-comment">/* BADGES */</span>
+<span class="token-value">.badge</span>           <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">inline-flex</span><span class="token-punct">;</span> <span class="token-key">align-items</span><span class="token-punct">:</span> <span class="token-value">center</span><span class="token-punct">;</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-xs) var(--spacing-md)</span><span class="token-punct">;</span> <span class="token-key">border-radius</span><span class="token-punct">:</span> <span class="token-value">var(--radius-full)</span><span class="token-punct">;</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-sm)</span><span class="token-punct">;</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">var(--font-weight-medium)</span><span class="token-punct">;</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary-100)</span><span class="token-punct">;</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary)</span><span class="token-punct">; }</span>
+<span class="token-value">.badge-secondary</span> <span class="token-punct">{</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-secondary-100)</span><span class="token-punct">;</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-secondary)</span><span class="token-punct">; }</span>
+
+<span class="token-value">a</span>               <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-primary)</span><span class="token-punct">;</span> <span class="token-key">text-decoration</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">;</span> <span class="token-key">transition</span><span class="token-punct">:</span> <span class="token-value">opacity var(--transition-fast)</span><span class="token-punct">; }</span>
+<span class="token-value">a:hover</span>         <span class="token-punct">{</span> <span class="token-key">opacity</span><span class="token-punct">:</span> <span class="token-value">0.8</span><span class="token-punct">; }</span>
+<span class="token-value">a.link-underline</span> <span class="token-punct">{</span> <span class="token-key">text-decoration</span><span class="token-punct">:</span> <span class="token-value">underline</span><span class="token-punct">;</span> <span class="token-key">text-underline-offset</span><span class="token-punct">:</span> <span class="token-value">3px</span><span class="token-punct">; }</span>
+<span class="token-value">svg, .droip-svg-icon</span> <span class="token-punct">{</span> <span class="token-key">fill</span><span class="token-punct">:</span> <span class="token-value">currentColor</span><span class="token-punct">; }</span>
+<span class="token-value">.divider</span>        <span class="token-punct">{</span> <span class="token-key">height</span><span class="token-punct">:</span> <span class="token-value">1px</span><span class="token-punct">;</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-border)</span><span class="token-punct">;</span> <span class="token-key">border</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">;</span> <span class="token-key">margin</span><span class="token-punct">:</span> <span class="token-value">var(--spacing-lg) 0</span><span class="token-punct">; }</span>
+
+<span class="token-comment">/* NAV BAR */</span>
+<span class="token-value">.nav-bar</span>               <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">flex</span><span class="token-punct">;</span> <span class="token-key">align-items</span><span class="token-punct">:</span> <span class="token-value">center</span><span class="token-punct">;</span> <span class="token-key">justify-content</span><span class="token-punct">:</span> <span class="token-value">space-between</span><span class="token-punct">;</span> <span class="token-key">background-color</span><span class="token-punct">:</span> <span class="token-value">var(--color-background)</span><span class="token-punct">; }</span>
+<span class="token-value">.nav-bar__logo</span>         <span class="token-punct">{</span> <span class="token-key">flex-shrink</span><span class="token-punct">:</span> <span class="token-value">0</span><span class="token-punct">;</span> <span class="token-key">height</span><span class="token-punct">:</span> <span class="token-value">40px</span><span class="token-punct">;</span> <span class="token-key">width</span><span class="token-punct">:</span> <span class="token-value">auto</span><span class="token-punct">; }</span>
+<span class="token-value">.nav-bar a:not(.btn), .nav-bar__link</span> <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-text)</span> <span class="token-punct">!important;</span> <span class="token-key">text-decoration</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">;</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">var(--font-weight-medium)</span><span class="token-punct">;</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-base)</span><span class="token-punct">;</span> <span class="token-key">transition</span><span class="token-punct">:</span> <span class="token-value">opacity var(--transition-fast)</span><span class="token-punct">;</span> <span class="token-key">white-space</span><span class="token-punct">:</span> <span class="token-value">nowrap</span><span class="token-punct">; }</span>
+<span class="token-value">.nav-bar a:not(.btn):hover, .nav-bar__link:hover</span> <span class="token-punct">{</span> <span class="token-key">opacity</span><span class="token-punct">:</span> <span class="token-value">0.7</span><span class="token-punct">; }</span>
+
+<span class="token-comment">/* RESPONSIVE — breakpoints kept in px */</span>
+<span class="token-value">@media (max-width: 1024px)</span> <span class="token-punct">{</span>
+  <span class="token-key">:root</span> <span class="token-punct">{</span> <span class="token-key">--font-size-6xl</span><span class="token-punct">:</span> <span class="token-value">2.5rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-5xl</span><span class="token-punct">:</span> <span class="token-value">2rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-4xl</span><span class="token-punct">:</span> <span class="token-value">1.75rem</span><span class="token-punct">; }</span>
+  <span class="token-value">.grid-cols-3, .grid-cols-4</span> <span class="token-punct">{</span> <span class="token-key">grid-template-columns</span><span class="token-punct">:</span> <span class="token-value">repeat(2, 1fr)</span><span class="token-punct">; }</span>
+<span class="token-punct">}</span>
+<span class="token-value">@media (max-width: 768px)</span> <span class="token-punct">{</span>
+  <span class="token-key">:root</span> <span class="token-punct">{</span> <span class="token-key">--container-padding</span><span class="token-punct">:</span> <span class="token-value">1rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-6xl</span><span class="token-punct">:</span> <span class="token-value">2rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-5xl</span><span class="token-punct">:</span> <span class="token-value">1.75rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-4xl</span><span class="token-punct">:</span> <span class="token-value">1.5rem</span><span class="token-punct">; }</span>
+  <span class="token-value">.grid-cols-2, .grid-cols-3, .grid-cols-4</span> <span class="token-punct">{</span> <span class="token-key">grid-template-columns</span><span class="token-punct">:</span> <span class="token-value">1fr</span><span class="token-punct">; }</span>
+  <span class="token-value">.hide-below-768</span> <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">; }</span>
+<span class="token-punct">}</span>
+<span class="token-value">@media (max-width: 640px)</span> <span class="token-punct">{</span>
+  <span class="token-key">:root</span> <span class="token-punct">{</span> <span class="token-key">--font-size-6xl</span><span class="token-punct">:</span> <span class="token-value">1.875rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-5xl</span><span class="token-punct">:</span> <span class="token-value">1.625rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-4xl</span><span class="token-punct">:</span> <span class="token-value">1.375rem</span><span class="token-punct">; }</span>
+  <span class="token-value">.hide-below-640</span> <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">; }</span>
+<span class="token-punct">}</span>
+
+<span class="token-comment">/* UTILITY */</span>
+<span class="token-value">.hidden</span>          <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">; }</span>
+<span class="token-value">.block</span>           <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">block</span><span class="token-punct">; }</span>
+<span class="token-value">.inline-block</span>    <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">inline-block</span><span class="token-punct">; }</span>
+<span class="token-value">.relative</span>        <span class="token-punct">{</span> <span class="token-key">position</span><span class="token-punct">:</span> <span class="token-value">relative</span><span class="token-punct">; }</span>
+<span class="token-value">.absolute</span>        <span class="token-punct">{</span> <span class="token-key">position</span><span class="token-punct">:</span> <span class="token-value">absolute</span><span class="token-punct">; }</span>
+<span class="token-value">.overflow-hidden</span> <span class="token-punct">{</span> <span class="token-key">overflow</span><span class="token-punct">:</span> <span class="token-value">hidden</span><span class="token-punct">; }</span>
+<span class="token-value">.pointer</span>         <span class="token-punct">{</span> <span class="token-key">cursor</span><span class="token-punct">:</span> <span class="token-value">pointer</span><span class="token-punct">; }</span>
+<span class="token-value">.p-0</span>             <span class="token-punct">{</span> <span class="token-key">padding</span><span class="token-punct">:</span> <span class="token-value">0</span><span class="token-punct">; }</span>
+
+<span class="token-comment">/* CRITICAL OVERRIDES */</span>
+<span class="token-value">body</span> <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">400</span> <span class="token-punct">!important; }</span>
+<span class="token-value">div, span, p, a, li, td, th, label, input, textarea, select, button</span> <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">400</span> <span class="token-punct">!important; }</span>
+<span class="token-value">h1, h2, h3, h4, h5, h6</span> <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">600</span> <span class="token-punct">!important; }</span>
+<span class="token-value">strong, b, .font-bold</span>   <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">700</span> <span class="token-punct">!important; }</span>
+<span class="token-value">.btn, .btn *</span>            <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">600</span> <span class="token-punct">!important; }</span>
+<span class="token-value">.font-medium</span>   <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">500</span> <span class="token-punct">!important; }</span>
+<span class="token-value">.font-semibold</span> <span class="token-punct">{</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">600</span> <span class="token-punct">!important; }</span>
+<span class="token-value">ul, ol</span> <span class="token-punct">{</span> <span class="token-key">padding-left</span><span class="token-punct">:</span> <span class="token-value">1.5rem</span> <span class="token-punct">!important; }</span>
+<span class="token-value">ul</span>     <span class="token-punct">{</span> <span class="token-key">list-style-type</span><span class="token-punct">:</span> <span class="token-value">disc</span>    <span class="token-punct">!important; }</span>
+<span class="token-value">ol</span>     <span class="token-punct">{</span> <span class="token-key">list-style-type</span><span class="token-punct">:</span> <span class="token-value">decimal</span> <span class="token-punct">!important; }</span>
+<span class="token-value">ul li, ol li</span> <span class="token-punct">{</span> <span class="token-key">margin-bottom</span><span class="token-punct">:</span> <span class="token-value">0.5rem</span> <span class="token-punct">!important; }</span></pre>
+        <button class="sg-copy-btn" id="copyBtn" onclick="copySnippet()">Copy full CSS</button>
+      </div>
+    </section>
+
+    <!-- ======================== PAGE STRUCTURE ======================== -->
+    <section class="sg-section" id="page-structure">
+      <div class="sg-section-title">02</div>
+      <div class="sg-section-heading">Page Structure</div>
+      <p class="sg-section-desc">Every page should follow this nesting order. Think of it as layers — each layer has one job and one job only. Never skip layers or combine their responsibilities.</p>
+
+      <div class="sg-diagram" style="margin-bottom: 2rem;">
+        <div class="sg-diagram-layer" style="background: var(--color-primary-50); color: var(--color-primary-900); border-color: var(--color-primary-100);">
+          .page-wrapper
+          <span class="sg-diagram-label">Outermost div on the page. Wraps everything. Use for overflow-x: hidden if needed.</span>
+        </div>
+        <div class="sg-diagram-layer sg-diagram-indent-1" style="background: var(--color-primary-100); color: var(--color-primary-900); border-color: var(--color-primary-200);">
+          &lt;main&gt; .main-wrapper
+          <span class="sg-diagram-label">Wraps all content between the nav and footer. Signals "main content" to screen readers.</span>
+        </div>
+        <div class="sg-diagram-layer sg-diagram-indent-2" style="background: var(--color-primary-200); color: var(--color-primary-900); border-color: var(--color-border);">
+          &lt;section&gt; .section_hero
+          <span class="sg-diagram-label">One per content section. Name it descriptively: section_hero, section_features, section_testimonials…</span>
+        </div>
+        <a href="#section-padding" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-3" style="background: var(--color-primary); color: white; border-color: var(--color-primary-700);">
+          padding-global + padding-section-medium
+          <span class="sg-diagram-label">Two classes on the same div. Controls left/right padding AND top/bottom section spacing. → Go to Section Padding</span>
+        </a>
+        <a href="#containers" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-4" style="background: var(--color-primary-700); color: white; border-color: var(--color-primary-800);">
+          container (or container-small / container-large)
+          <span class="sg-diagram-label">Centers content and sets max-width. Choose the right size for the content type. → Go to Containers</span>
+        </a>
+        <div class="sg-diagram-layer sg-diagram-indent-5" style="background: var(--color-primary-900); color: white; border-color: var(--color-primary-950);">
+          Your content — headings, grids, cards, text…
+          <span class="sg-diagram-label">Everything else goes here. Use layout utilities, components, and color classes.</span>
+        </div>
+      </div>
+
+      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);">
+        <div class="sg-label">
+          <div class="sg-class">page-wrapper</div>
+          <div class="sg-desc">One per page. Never style it heavily — it's an anchor, not a layout element.</div>
+        </div>
+        <div class="sg-preview">
+          <div class="card-flat is-info" style="padding: 1rem; font-size: 0.8125rem;">
+            Common use: add <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">overflow-x: hidden</code> directly on this element to prevent horizontal scroll issues site-wide.
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-label">
+          <div class="sg-class">main-wrapper</div>
+          <div class="sg-desc">Use the <code style="font-size:12px;">&lt;main&gt;</code> HTML tag. Excludes nav and footer.</div>
+        </div>
+        <div class="sg-preview">
+          <div class="card-flat is-info" style="padding: 1rem; font-size: 0.8125rem;">
+            In Droip: select the wrapper element between your nav and footer, change its HTML tag to <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">&lt;main&gt;</code> in the element settings, then add class <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">main-wrapper</code>.
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-label">
+          <div class="sg-class">section_[name]</div>
+          <div class="sg-desc">Use the <code style="font-size:12px;">&lt;section&gt;</code> HTML tag. Name each one uniquely.</div>
+        </div>
+        <div class="sg-preview">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="badge">section_hero</span>
+            <span class="badge">section_features</span>
+            <span class="badge">section_pricing</span>
+            <span class="badge">section_testimonials</span>
+            <span class="badge">section_faq</span>
+            <span class="badge">section_cta</span>
+          </div>
+          <p class="text-small text-muted" style="margin-top: 0.75rem;">No styles live on these classes — they're for identification only. Apply backgrounds via <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">bg-*</code> classes.</p>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-label">
+          <div class="sg-class">padding-global</div>
+          <div class="sg-desc">Always on the same div as <code style="font-size:12px;">padding-section-*</code>. Controls left/right only.</div>
+        </div>
+        <div class="sg-preview">
+          <div class="card-flat is-info" style="padding: 1rem; font-size: 0.8125rem;">
+            Sets <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">padding-left</code> and <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">padding-right</code> to <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">--container-padding</code> (1.25rem). Change this one variable to update all page margins site-wide.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== SECTION PADDING ======================== -->
+    <section class="sg-section" id="section-padding">
+      <div class="sg-section-title">03</div>
+      <div class="sg-section-heading">Section Padding</div>
+      <p class="sg-section-desc">Controls the vertical breathing room between sections. Always combine with <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">.padding-global</code> on the same element.</p>
+
+      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);">
+        <div class="sg-label">
+          <div class="sg-class">padding-section-small</div>
+          <div class="sg-desc">3rem · 48px top + bottom<br>Tight sections — banners, thin strips, announcement bars.</div>
+        </div>
+        <div class="sg-preview">
+          <div class="pad-viz">
+            <div class="pad-viz-block">
+              <div class="pad-viz-spacer" style="height: 48px;">3rem</div>
+              <div class="pad-viz-content" style="height: 40px;">content</div>
+              <div class="pad-viz-spacer" style="height: 48px;">3rem</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-label">
+          <div class="sg-class">padding-section-medium</div>
+          <div class="sg-desc">5rem · 80px top + bottom<br>Standard sections — feature rows, team grids, testimonials. Use this as your default.</div>
+        </div>
+        <div class="sg-preview">
+          <div class="pad-viz">
+            <div class="pad-viz-block">
+              <div class="pad-viz-spacer" style="height: 64px;">5rem</div>
+              <div class="pad-viz-content" style="height: 40px;">content</div>
+              <div class="pad-viz-spacer" style="height: 64px;">5rem</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-label">
+          <div class="sg-class">padding-section-large</div>
+          <div class="sg-desc">7.5rem · 120px top + bottom<br>Spacious hero sections, full-height intros, major CTAs.</div>
+        </div>
+        <div class="sg-preview">
+          <div class="pad-viz">
+            <div class="pad-viz-block">
+              <div class="pad-viz-spacer" style="height: 80px;">7.5rem</div>
+              <div class="pad-viz-content" style="height: 40px;">content</div>
+              <div class="pad-viz-spacer" style="height: 80px;">7.5rem</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== CONTAINERS ======================== -->
+    <section class="sg-section" id="containers">
+      <div class="sg-section-title">04</div>
+      <div class="sg-section-heading">Containers</div>
+      <p class="sg-section-desc">Three widths. Always sits inside <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">.padding-global</code>. Centered automatically with <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">margin: auto</code>.</p>
+
+      <div class="container-viz">
+        <div class="container-viz-bar" style="background: var(--color-primary-200); max-width: 100%;">
+          <span class="container-viz-label" style="color: var(--color-primary-900);">.container-large — 80rem (1280px) — heroes, full layouts</span>
+        </div>
+        <div class="container-viz-bar" style="background: var(--color-primary); max-width: 80%;">
+          <span class="container-viz-label" style="color: white;">.container — 64rem (1024px) — standard page content</span>
+        </div>
+        <div class="container-viz-bar" style="background: var(--color-primary-700); max-width: 50%;">
+          <span class="container-viz-label" style="color: white;">.container-small — 40rem (640px) — blog text, narrow CTAs</span>
+        </div>
+      </div>
+
+      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);">
+        <div class="sg-label">
+          <div class="sg-class">container-small</div>
+          <div class="sg-desc">40rem · 640px<br>Blog posts, legal pages, narrow centered CTAs. Keeps long-form text comfortable to read.</div>
+        </div>
+        <div class="sg-preview">
+          <div style="background: var(--color-primary-50); border-radius: 0.5rem; padding: 4px;">
+            <div style="background: var(--color-primary-100); border-radius: 4px; padding: 0.75rem; font-size: 0.8125rem; text-align: center; max-width: 40rem; margin: auto;">
+              max-width: 40rem
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-label">
+          <div class="sg-class">container</div>
+          <div class="sg-desc">64rem · 1024px<br>Default. Use for most sections: feature grids, team sections, pricing tables.</div>
+        </div>
+        <div class="sg-preview">
+          <div style="background: var(--color-primary-50); border-radius: 0.5rem; padding: 4px;">
+            <div style="background: var(--color-primary); border-radius: 4px; padding: 0.75rem; font-size: 0.8125rem; text-align: center; color: white; max-width: 64rem; margin: auto;">
+              max-width: 64rem — default
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-label">
+          <div class="sg-class">container-large</div>
+          <div class="sg-desc">80rem · 1280px<br>Wide hero sections, full-bleed image layouts, dashboard-style content.</div>
+        </div>
+        <div class="sg-preview">
+          <div style="background: var(--color-primary-50); border-radius: 0.5rem; padding: 4px;">
+            <div style="background: var(--color-secondary); border-radius: 4px; padding: 0.75rem; font-size: 0.8125rem; text-align: center; color: white; max-width: 80rem; margin: auto;">
+              max-width: 80rem
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== COLORS ======================== -->
+    <section class="sg-section" id="colors">
+      <div class="sg-section-title">05</div>
+      <div class="sg-section-heading">Brand Colors</div>
+      <p class="sg-section-desc">Only two values need to change per client. All shades below are auto-generated from those two using <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">color-mix()</code>.</p>
+
+      <p style="font-size: 0.8125rem; font-weight: 600 !important; margin-bottom: 0.75rem; color: var(--color-text-secondary);">PRIMARY</p>
+      <div class="swatch-grid" style="margin-bottom: 2rem;">
+        <div class="swatch"><div class="swatch-color bg-primary-lighter"></div><div class="swatch-info"><span class="swatch-name">primary-50</span><span class="swatch-value">5% + white</span></div></div>
+        <div class="swatch"><div class="swatch-color bg-primary-light"></div><div class="swatch-info"><span class="swatch-name">primary-100</span><span class="swatch-value">10% + white</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:var(--color-primary-200);"></div><div class="swatch-info"><span class="swatch-name">primary-200</span><span class="swatch-value">20% + white</span></div></div>
+        <div class="swatch"><div class="swatch-color bg-primary"></div><div class="swatch-info"><span class="swatch-name">primary</span><span class="swatch-value">#009B60 base</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:var(--color-primary-700);"></div><div class="swatch-info"><span class="swatch-name">primary-700</span><span class="swatch-value">hover state</span></div></div>
+        <div class="swatch"><div class="swatch-color bg-primary-dark"></div><div class="swatch-info"><span class="swatch-name">primary-900</span><span class="swatch-value">dark bg</span></div></div>
+        <div class="swatch"><div class="swatch-color bg-primary-darker"></div><div class="swatch-info"><span class="swatch-name">primary-950</span><span class="swatch-value">darkest bg</span></div></div>
+      </div>
+
+      <p style="font-size: 0.8125rem; font-weight: 600 !important; margin-bottom: 0.75rem; color: var(--color-text-secondary);">SECONDARY</p>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-color bg-secondary-light"></div><div class="swatch-info"><span class="swatch-name">secondary-100</span><span class="swatch-value">10% + white</span></div></div>
+        <div class="swatch"><div class="swatch-color bg-secondary"></div><div class="swatch-info"><span class="swatch-name">secondary</span><span class="swatch-value">#012D20 base</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:var(--color-secondary-700);"></div><div class="swatch-info"><span class="swatch-name">secondary-700</span><span class="swatch-value">hover state</span></div></div>
+      </div>
+    </section>
+
+    <!-- ======================== TYPOGRAPHY ======================== -->
+    <section class="sg-section" id="typography">
+      <div class="sg-section-title">06</div>
+      <div class="sg-section-heading">Typography</div>
+      <p class="sg-section-desc">Font is Inter by default. All sizes in rem — they scale with the user's browser font preferences. Override <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">--font-family-base</code> in the client section to change the font.</p>
+
+      <div style="margin-bottom: 2rem;">
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h1</span><div class="sg-desc">3rem · 48px</div></div><div class="type-sample"><h1 style="font-size:var(--font-size-6xl);">Page Heading</h1></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h2</span><div class="sg-desc">2.5rem · 40px</div></div><div class="type-sample"><h2 style="font-size:var(--font-size-5xl);">Section Heading</h2></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h3</span><div class="sg-desc">2rem · 32px</div></div><div class="type-sample"><h3 style="font-size:var(--font-size-4xl);">Subsection</h3></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h4</span><div class="sg-desc">1.75rem · 28px</div></div><div class="type-sample"><h4 style="font-size:var(--font-size-3xl);">Card Title</h4></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h5</span><div class="sg-desc">1.5rem · 24px</div></div><div class="type-sample"><h5 style="font-size:var(--font-size-2xl);">Label Heading</h5></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h6</span><div class="sg-desc">1.125rem · 18px</div></div><div class="type-sample"><h6>Small Heading</h6></div></div>
+        <div class="type-row"><div class="type-meta"><span >p</span><div class="sg-desc">1rem · 16px</div></div><div class="type-sample"><p>Body text. The quick brown fox jumps over the lazy dog.</p></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">text-large</span><div class="sg-desc">1.125rem · 18px</div></div><div class="type-sample"><p style="font-size:var(--font-size-lg);">Large body — intros and leads.</p></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">text-small</span><div class="sg-desc">0.875rem · 14px</div></div><div class="type-sample"><p style="font-size:var(--font-size-sm);">Small — captions and secondary info.</p></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">text-xs</span><div class="sg-desc">0.75rem · 12px</div></div><div class="type-sample"><p style="font-size:var(--font-size-xs);">Extra small — labels, badges, metadata.</p></div></div>
+      </div>
+
+      <p style="font-size: 0.8125rem; font-weight: 600 !important; margin-bottom: 1rem; color: var(--color-text-secondary);">FONT WEIGHTS</p>
+      <div class="flex gap-xl" style="flex-wrap: wrap;">
+        <div><p class="font-normal" style="font-size:1.25rem;">Normal (400)</p><div class="sg-class">font-normal</div></div>
+        <div><p class="font-medium" style="font-size:1.25rem;">Medium (500)</p><div class="sg-class">font-medium</div></div>
+        <div><p class="font-semibold" style="font-size:1.25rem;">Semibold (600)</p><div class="sg-class">font-semibold</div></div>
+        <div><p class="font-bold" style="font-size:1.25rem;">Bold (700)</p><div class="sg-class">font-bold</div></div>
+      </div>
+    </section>
+
+    <!-- ======================== BUTTONS ======================== -->
+    <section class="sg-section" id="buttons">
+      <div class="sg-section-title">07</div>
+      <div class="sg-section-heading">Buttons</div>
+      <p class="sg-section-desc">Always start with <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">.btn</code>, then add a variant class. Optionally add a size modifier.</p>
+
+      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);">
+        <div class="sg-label"><div class="sg-class">btn btn-primary</div><div class="sg-desc">Main CTA. Use sparingly — one per section.</div></div>
+        <div class="sg-preview flex gap-md" style="flex-wrap:wrap; align-items:center;">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">btn btn-secondary</div><div class="sg-desc">Secondary action. Uses the secondary brand color.</div></div>
+        <div class="sg-preview flex gap-md" style="flex-wrap:wrap; align-items:center;">
+          <button class="btn btn-secondary btn-sm">Small</button>
+          <button class="btn btn-secondary">Default</button>
+          <button class="btn btn-secondary btn-lg">Large</button>
+        </div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">btn btn-outline</div><div class="sg-desc">Outlined primary. Good alongside a filled button.</div></div>
+        <div class="sg-preview flex gap-md" style="flex-wrap:wrap; align-items:center;">
+          <button class="btn btn-outline btn-sm">Small</button>
+          <button class="btn btn-outline">Default</button>
+          <button class="btn btn-outline btn-lg">Large</button>
+        </div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">btn btn-ghost</div><div class="sg-desc">No background. Tertiary actions, nav links.</div></div>
+        <div class="sg-preview flex gap-md" style="flex-wrap:wrap; align-items:center;">
+          <button class="btn btn-ghost btn-sm">Small</button>
+          <button class="btn btn-ghost">Default</button>
+          <button class="btn btn-ghost btn-lg">Large</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== CARDS ======================== -->
+    <section class="sg-section" id="cards">
+      <div class="sg-section-title">08</div>
+      <div class="sg-section-heading">Cards</div>
+      <p class="sg-section-desc">Three styles for different levels of visual elevation.</p>
+      <div class="grid grid-cols-3 gap-lg" style="margin-top: 0.5rem;">
+        <div>
+          <div class="card"><h6 style="margin-bottom:0.5rem;">Shadowed</h6><p class="text-small text-muted">Floats above the page. Good for featured content.</p></div>
+          <div class="sg-class">card</div>
+        </div>
+        <div>
+          <div class="card-outlined"><h6 style="margin-bottom:0.5rem;">Outlined</h6><p class="text-small text-muted">Flat with border. Good for grids of equal items.</p></div>
+          <div class="sg-class">card-outlined</div>
+        </div>
+        <div>
+          <div class="card-flat"><h6 style="margin-bottom:0.5rem;">Flat</h6><p class="text-small text-muted">Tinted background. Good inside boxed sections.</p></div>
+          <div class="sg-class">card-flat</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== BADGES ======================== -->
+    <section class="sg-section" id="badges">
+      <div class="sg-section-title">09</div>
+      <div class="sg-section-heading">Badges</div>
+      <p class="sg-section-desc">Small pill labels for statuses, tags, and categories.</p>
+      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);">
+        <div class="sg-label"><div class="sg-class">badge</div><div class="sg-desc">Primary tint.</div></div>
+        <div class="sg-preview flex gap-md items-center"><span class="badge">New</span><span class="badge">Featured</span><span class="badge">In Progress</span></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">badge badge-secondary</div><div class="sg-desc">Secondary tint.</div></div>
+        <div class="sg-preview flex gap-md items-center"><span class="badge badge-secondary">Completed</span><span class="badge badge-secondary">Published</span></div>
+      </div>
+    </section>
+
+    <!-- ======================== TEXT COLORS ======================== -->
+    <section class="sg-section" id="text-colors">
+      <div class="sg-section-title">10</div>
+      <div class="sg-section-heading">Text Colors</div>
+      <p class="sg-section-desc">Semantic text utilities. Light variants are for use on dark backgrounds.</p>
+      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);">
+        <div class="sg-label"><div class="sg-class">text-primary</div></div>
+        <div class="sg-preview"><p class="text-primary font-medium">Primary brand color text</p></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">text-secondary</div></div>
+        <div class="sg-preview"><p class="text-secondary font-medium">Secondary brand color text</p></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div >(default)</div></div>
+        <div class="sg-preview"><p>Default body text — slightly tinted toward primary</p></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">text-75</div></div>
+        <div class="sg-preview"><p class="text-75">75% opacity — secondary labels</p></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">text-muted</div></div>
+        <div class="sg-preview"><p class="text-muted">Muted grey — captions, metadata</p></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">text-white text-light-75</div><div class="sg-desc">For dark backgrounds</div></div>
+        <div class="sg-preview">
+          <div style="background:var(--color-primary-900); padding:1rem; border-radius:0.5rem; display:inline-block;">
+            <p class="text-white">.text-white — full white</p>
+            <p class="text-light-75" style="margin-top:0.5rem;">.text-light-75 — 75% white</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== BACKGROUNDS ======================== -->
+    <section class="sg-section" id="backgrounds">
+      <div class="sg-section-title">11</div>
+      <div class="sg-section-heading">Background Colors</div>
+      <p class="sg-section-desc">Use these to create visual sections and contrast without custom colors.</p>
+      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);"><div class="sg-label"><div class="sg-class">bg-white</div></div><div class="sg-preview"><div class="bg-white border rounded-md" style="padding:1rem;font-size:0.875rem;">#ffffff — page default</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-grey-lighter</div></div><div class="sg-preview"><div class="bg-grey-lighter rounded-md" style="padding:1rem;font-size:0.875rem;">2% primary + white</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-grey-light</div></div><div class="sg-preview"><div class="bg-grey-light rounded-md" style="padding:1rem;font-size:0.875rem;">4% primary + white</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-surface</div></div><div class="sg-preview"><div class="bg-surface rounded-md" style="padding:1rem;font-size:0.875rem;">Same as primary-50 — the "off-white" surface</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-primary-lighter</div></div><div class="sg-preview"><div class="bg-primary-lighter rounded-md" style="padding:1rem;font-size:0.875rem;">5% primary — lightest brand tint</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-primary-light</div></div><div class="sg-preview"><div class="bg-primary-light rounded-md" style="padding:1rem;font-size:0.875rem;">10% primary — soft brand tint</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-primary</div></div><div class="sg-preview"><div class="bg-primary rounded-md" style="padding:1rem;font-size:0.875rem;">Full primary color</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-primary-dark</div></div><div class="sg-preview"><div class="bg-primary-dark rounded-md" style="padding:1rem;font-size:0.875rem;">Dark primary — section headers</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-primary-darker</div></div><div class="sg-preview"><div class="bg-primary-darker rounded-md" style="padding:1rem;font-size:0.875rem;">Darkest — footers, dark heroes</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-secondary</div></div><div class="sg-preview"><div class="bg-secondary rounded-md" style="padding:1rem;font-size:0.875rem;">Secondary color background</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">bg-secondary-light</div></div><div class="sg-preview"><div class="bg-secondary-light rounded-md" style="padding:1rem;font-size:0.875rem;">10% secondary + white</div></div></div>
+    </section>
+
+    <!-- ======================== BORDERS ======================== -->
+    <section class="sg-section" id="borders">
+      <div class="sg-section-title">12</div>
+      <div class="sg-section-heading">Borders</div>
+      <p class="sg-section-desc">All 1px — kept in px per spec. Color derived from the primary shade scale.</p>
+      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);"><div class="sg-label"><div class="sg-class">border</div></div><div class="sg-preview"><div class="border rounded-md" style="padding:1rem;font-size:0.875rem;">primary-200 — standard weight</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">border-light</div></div><div class="sg-preview"><div class="border-light rounded-md" style="padding:1rem;font-size:0.875rem;">primary-100 — subtle, almost invisible</div></div></div>
+      <div class="sg-row"><div class="sg-label"><div class="sg-class">border-primary</div></div><div class="sg-preview"><div class="border-primary rounded-md" style="padding:1rem;font-size:0.875rem;">Full primary color border</div></div></div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">border-t/b/l/r</div><div class="sg-desc">Single side borders</div></div>
+        <div class="sg-preview flex gap-md" style="flex-wrap:wrap;">
+          <div class="border-t" style="padding:0.75rem 1rem;font-size:0.8125rem;">border-t</div>
+          <div class="border-b" style="padding:0.75rem 1rem;font-size:0.8125rem;">border-b</div>
+          <div class="border-l" style="padding:0.75rem 1rem;font-size:0.8125rem;">border-l</div>
+          <div class="border-r" style="padding:0.75rem 1rem;font-size:0.8125rem;">border-r</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== LAYOUT ======================== -->
+    <section class="sg-section" id="layout">
+      <div class="sg-section-title">13</div>
+      <div class="sg-section-heading">Layout Utilities</div>
+      <p class="sg-section-desc">Flex and grid helpers. Combine freely. Grids collapse automatically at breakpoints.</p>
+      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);">
+        <div class="sg-label"><div class="sg-class">flex gap-md</div><div class="sg-desc">Horizontal row</div></div>
+        <div class="sg-preview"><div class="flex gap-md"><div class="bg-primary-light rounded-sm" style="padding:0.75rem 1rem;font-size:0.8125rem;">A</div><div class="bg-primary-light rounded-sm" style="padding:0.75rem 1rem;font-size:0.8125rem;">B</div><div class="bg-primary-light rounded-sm" style="padding:0.75rem 1rem;font-size:0.8125rem;">C</div></div></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">flex items-center justify-between</div></div>
+        <div class="sg-preview"><div class="flex items-center justify-between border rounded-md" style="padding:0.75rem 1rem;"><span style="font-size:0.875rem;">Left content</span><button class="btn btn-primary btn-sm">Action</button></div></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">grid grid-cols-3 gap-md</div><div class="sg-desc">Collapses to 2 cols at 1024px, 1 col at 768px</div></div>
+        <div class="sg-preview"><div class="grid grid-cols-3 gap-md"><div class="bg-primary-light rounded-sm" style="padding:0.75rem;font-size:0.8125rem;text-align:center;">Col 1</div><div class="bg-primary-light rounded-sm" style="padding:0.75rem;font-size:0.8125rem;text-align:center;">Col 2</div><div class="bg-primary-light rounded-sm" style="padding:0.75rem;font-size:0.8125rem;text-align:center;">Col 3</div></div></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-label"><div class="sg-class">flex-center</div><div class="sg-desc">Centered both axes</div></div>
+        <div class="sg-preview"><div class="flex-center bg-surface rounded-md" style="height:80px;"><span style="font-size:0.875rem;">Centered content</span></div></div>
+      </div>
+    </section>
+
+    <!-- ======================== SPACING ======================== -->
+    <section class="sg-section" id="spacing">
+      <div class="sg-section-title">14</div>
+      <div class="sg-section-heading">Spacing Scale</div>
+      <p class="sg-section-desc">All in rem. Use gap utilities on flex/grid containers. The scale matches Client-First's 4pt system converted to rem.</p>
+      <div style="margin-top: 0.5rem;">
+        <div class="spacing-row"><div class="spacing-label"><span class="sg-class">gap-xs</span> — 0.25rem (4px)</div><div class="spacing-bar" style="width:4px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label"><span class="sg-class">gap-sm</span> — 0.5rem (8px)</div><div class="spacing-bar" style="width:8px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label"><span class="sg-class">gap-md</span> — 1rem (16px)</div><div class="spacing-bar" style="width:16px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label"><span class="sg-class">gap-lg</span> — 1.5rem (24px)</div><div class="spacing-bar" style="width:24px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label"><span class="sg-class">gap-xl</span> — 2rem (32px)</div><div class="spacing-bar" style="width:32px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label"><span class="sg-class">gap-2xl</span> — 3rem (48px)</div><div class="spacing-bar" style="width:48px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label"><span class="sg-class">gap-3xl</span> — 4rem (64px)</div><div class="spacing-bar" style="width:64px;"></div></div>
+      </div>
+    </section>
+
+    <!-- ======================== SPACING UTILITIES ======================== -->
+    <section class="sg-section" id="spacing-utilities">
+      <div class="sg-section-title">15</div>
+      <div class="sg-section-heading">Spacing Utilities</div>
+      <p class="sg-section-desc">Reference only — not in the master snippet. Combine a <strong>direction</strong> class with a <strong>size</strong> class on the same element. The direction defines which sides receive padding; the size sets the value via a scoped CSS custom property.</p>
+
+      <div style="background: color-mix(in srgb, #f59e0b 12%, white); border: 1px solid color-mix(in srgb, #f59e0b 30%, white); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 2rem; font-size: var(--font-size-sm); color: #92400e;">
+        ⚠️ These classes are a <strong>Droip-side utility</strong> — apply them in the page builder. They are not included in the CSS snippet pasted into Custom Code.
+      </div>
+
+      <!-- Usage example -->
+      <div style="margin-bottom: 2.5rem;">
+        <div class="sg-desc" style="margin-bottom: 0.75rem; font-weight: 600 !important; color: var(--color-text);">Usage</div>
+        <div style="background: #0f172a; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #94a3b8; line-height: 1.7;">
+          <span style="color:#7dd3fc;">&lt;div</span> <span style="color:#86efac;">class</span>=<span style="color:#fca5a5;">"padding-vertical padding-large"</span><span style="color:#7dd3fc;">&gt;</span><span style="color:#94a3b8;">...</span><span style="color:#7dd3fc;">&lt;/div&gt;</span><br>
+          <span style="color:#7dd3fc;">&lt;div</span> <span style="color:#86efac;">class</span>=<span style="color:#fca5a5;">"padding-horizontal padding-medium"</span><span style="color:#7dd3fc;">&gt;</span><span style="color:#94a3b8;">...</span><span style="color:#7dd3fc;">&lt;/div&gt;</span><br>
+          <span style="color:#7dd3fc;">&lt;div</span> <span style="color:#86efac;">class</span>=<span style="color:#fca5a5;">"padding-top padding-small"</span><span style="color:#7dd3fc;">&gt;</span><span style="color:#94a3b8;">...</span><span style="color:#7dd3fc;">&lt;/div&gt;</span>
+        </div>
+      </div>
+
+      <!-- Direction classes -->
+      <div style="margin-bottom: 2.5rem;">
+        <div class="sg-desc" style="margin-bottom: 1rem; font-weight: 600 !important; color: var(--color-text);">Direction classes</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem;">
+
+          <!-- padding-top -->
+          <div style="border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.625rem;">
+            <div style="width: 44px; height: 44px; position: relative; border: 1.5px solid var(--color-border); border-radius: 4px; background: white;">
+              <div style="position:absolute; top:0; left:0; right:0; height:8px; background:var(--color-primary); border-radius: 3px 3px 0 0;"></div>
+            </div>
+            <span class="sg-class" style="margin:0;">padding-top</span>
+          </div>
+
+          <!-- padding-bottom -->
+          <div style="border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.625rem;">
+            <div style="width: 44px; height: 44px; position: relative; border: 1.5px solid var(--color-border); border-radius: 4px; background: white;">
+              <div style="position:absolute; bottom:0; left:0; right:0; height:8px; background:var(--color-primary); border-radius: 0 0 3px 3px;"></div>
+            </div>
+            <span class="sg-class" style="margin:0;">padding-bottom</span>
+          </div>
+
+          <!-- padding-left -->
+          <div style="border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.625rem;">
+            <div style="width: 44px; height: 44px; position: relative; border: 1.5px solid var(--color-border); border-radius: 4px; background: white;">
+              <div style="position:absolute; top:0; left:0; bottom:0; width:8px; background:var(--color-primary); border-radius: 3px 0 0 3px;"></div>
+            </div>
+            <span class="sg-class" style="margin:0;">padding-left</span>
+          </div>
+
+          <!-- padding-right -->
+          <div style="border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.625rem;">
+            <div style="width: 44px; height: 44px; position: relative; border: 1.5px solid var(--color-border); border-radius: 4px; background: white;">
+              <div style="position:absolute; top:0; right:0; bottom:0; width:8px; background:var(--color-primary); border-radius: 0 3px 3px 0;"></div>
+            </div>
+            <span class="sg-class" style="margin:0;">padding-right</span>
+          </div>
+
+          <!-- padding-vertical -->
+          <div style="border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.625rem;">
+            <div style="width: 44px; height: 44px; position: relative; border: 1.5px solid var(--color-border); border-radius: 4px; background: white;">
+              <div style="position:absolute; top:0; left:0; right:0; height:8px; background:var(--color-primary); border-radius: 3px 3px 0 0;"></div>
+              <div style="position:absolute; bottom:0; left:0; right:0; height:8px; background:var(--color-primary); border-radius: 0 0 3px 3px;"></div>
+            </div>
+            <span class="sg-class" style="margin:0;">padding-vertical</span>
+          </div>
+
+          <!-- padding-horizontal -->
+          <div style="border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.625rem;">
+            <div style="width: 44px; height: 44px; position: relative; border: 1.5px solid var(--color-border); border-radius: 4px; background: white;">
+              <div style="position:absolute; top:0; left:0; bottom:0; width:8px; background:var(--color-primary); border-radius: 3px 0 0 3px;"></div>
+              <div style="position:absolute; top:0; right:0; bottom:0; width:8px; background:var(--color-primary); border-radius: 0 3px 3px 0;"></div>
+            </div>
+            <span class="sg-class" style="margin:0;">padding-horizontal</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Size classes -->
+      <div>
+        <div class="sg-desc" style="margin-bottom: 1rem; font-weight: 600 !important; color: var(--color-text);">Size classes</div>
+        <div style="display: grid; grid-template-columns: 220px 1fr max-content; gap: 0; border: 1px solid var(--color-border-light); border-radius: var(--radius-md); overflow: hidden;">
+          <!-- Header -->
+          <div style="padding: 0.5rem 1rem; background: var(--color-surface); font-size: var(--font-size-xs); font-weight: 600 !important; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--color-border-light);">Class</div>
+          <div style="padding: 0.5rem 1rem; background: var(--color-surface); font-size: var(--font-size-xs); font-weight: 600 !important; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--color-border-light);">Visual</div>
+          <div style="padding: 0.5rem 1rem; background: var(--color-surface); font-size: var(--font-size-xs); font-weight: 600 !important; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--color-border-light);">Value</div>
+
+          <!-- padding-0 -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-0</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 2px; background: var(--color-border); border-radius: 2px;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">0</div>
+
+          <!-- padding-tiny -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-tiny</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 4px; background: var(--color-primary); border-radius: 2px; opacity: 0.7;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">0.25rem / 4px</div>
+
+          <!-- padding-xxsmall -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xxsmall</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 8px; background: var(--color-primary); border-radius: 2px; opacity: 0.75;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">0.5rem / 8px</div>
+
+          <!-- padding-xsmall -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xsmall</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 16px; background: var(--color-primary); border-radius: 2px; opacity: 0.8;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">1rem / 16px</div>
+
+          <!-- padding-small -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-small</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 24px; background: var(--color-primary); border-radius: 2px; opacity: 0.82;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">1.5rem / 24px</div>
+
+          <!-- padding-medium -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-medium</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 32px; background: var(--color-primary); border-radius: 2px; opacity: 0.85;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">2rem / 32px</div>
+
+          <!-- padding-large -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-large</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 48px; background: var(--color-primary); border-radius: 2px; opacity: 0.87;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">3rem / 48px</div>
+
+          <!-- padding-xlarge -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xlarge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 64px; background: var(--color-primary); border-radius: 2px; opacity: 0.89;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">4rem / 64px</div>
+
+          <!-- padding-xxlarge -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xxlarge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 80px; background: var(--color-primary); border-radius: 2px; opacity: 0.91;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">5rem / 80px</div>
+
+          <!-- padding-huge -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-huge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 120px; background: var(--color-primary); border-radius: 2px; opacity: 0.93;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">7.5rem / 120px</div>
+
+          <!-- padding-xhuge -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xhuge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 160px; background: var(--color-primary); border-radius: 2px; opacity: 0.95;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">10rem / 160px</div>
+
+          <!-- padding-xxhuge -->
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xxhuge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 200px; background: var(--color-primary); border-radius: 2px; opacity: 0.97;"></div></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">12.5rem / 200px</div>
+
+          <!-- padding-custom1 -->
+          <div style="padding: 0.625rem 1rem; display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-custom1</span></div>
+          <div style="padding: 0.625rem 1rem; display: flex; align-items: center; font-size: var(--font-size-xs); color: var(--color-text-muted); font-style: italic;">project-specific override</div>
+          <div style="padding: 0.625rem 1rem; display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== RADIUS ======================== -->
+    <section class="sg-section" id="radius">
+      <div class="sg-section-title">16</div>
+      <div class="sg-section-heading">Border Radius</div>
+      <p class="sg-section-desc">Four values in rem, except <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">--radius-full</code> which stays at 9999px — there's no rem equivalent for "fully round".</p>
+      <div class="flex gap-xl" style="flex-wrap:wrap; align-items:flex-end; margin-top: 0.5rem;">
+        <div class="flex flex-col items-center gap-sm"><div class="radius-demo rounded-sm">sm</div><div class="sg-class">rounded-sm</div><div class="sg-desc">0.5rem</div></div>
+        <div class="flex flex-col items-center gap-sm"><div class="radius-demo rounded-md">md</div><div class="sg-class">rounded-md</div><div class="sg-desc">0.75rem</div></div>
+        <div class="flex flex-col items-center gap-sm"><div class="radius-demo rounded-lg" style="width:120px;">lg</div><div class="sg-class">rounded-lg</div><div class="sg-desc">2.5rem</div></div>
+        <div class="flex flex-col items-center gap-sm"><div class="radius-demo rounded-full">full</div><div class="sg-class">rounded-full</div><div class="sg-desc">9999px</div></div>
+      </div>
+    </section>
+
+    <!-- ======================== SHADOWS ======================== -->
+    <section class="sg-section" id="shadows">
+      <div class="sg-section-title">17</div>
+      <div class="sg-section-heading">Shadows</div>
+      <p class="sg-section-desc">Shadow blur and spread values are kept in px — a Client-First convention since they're decorative and don't need to scale with font size.</p>
+      <div class="flex gap-xl" style="flex-wrap:wrap; margin-top: 0.5rem;">
+        <div><div class="shadow-demo shadow-sm rounded-md" style="width:200px;">.shadow-sm</div><div class="sg-desc" style="margin-top:0.75rem;">Subtle — inputs, rows</div></div>
+        <div><div class="shadow-demo shadow-md rounded-md" style="width:200px;">.shadow-md</div><div class="sg-desc" style="margin-top:0.75rem;">Default — cards</div></div>
+        <div><div class="shadow-demo shadow-lg rounded-md" style="width:200px;">.shadow-lg</div><div class="sg-desc" style="margin-top:0.75rem;">Elevated — modals</div></div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="sg-footer-bar" style="padding:2.5rem var(--container-padding); text-align:center;">
+    <p style="color:rgba(255,255,255,0.4); font-size:0.8125rem;">
+      Style Guide — update <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px; color:rgba(255,255,255,0.7);">--color-primary</code> and <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px; color:rgba(255,255,255,0.7);">--color-secondary</code> to rebrand. All sizes in rem.
+    </p>
+  </div>
+
+  <script>
+    // ── Spacing value copy ──
+    function copySpacingValue(el) {
+      const full = el.textContent.trim();
+      if (!full || full === '—') return;
+      const val = full.includes('/') ? full.split('/')[0].trim() : full;
+      navigator.clipboard.writeText(val).then(() => {
+        const orig = el.textContent;
+        const origBg = el.style.background;
+        el.textContent = '✓ Copied!';
+        el.style.background = 'color-mix(in srgb, var(--color-primary) 12%, white)';
+        el.style.color = 'var(--color-primary)';
+        setTimeout(() => {
+          el.textContent = orig;
+          el.style.background = origBg;
+          el.style.color = 'var(--color-text)';
+        }, 1500);
+      });
+    }
+
+    // ── Sticky nav active state ──
+    const sections = document.querySelectorAll('.sg-section');
+    const navLinks = document.querySelectorAll('.sg-nav a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+          const activeLink = document.querySelector(`.sg-nav a[href="#${id}"]`);
+          if (activeLink) activeLink.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+        }
+      });
+    }, { rootMargin: '-10% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+
+    // ── Copy snippet ──
+    function copySnippet() {
+      const fullCSS = `/* ============================================
+ 🎨 CLIENT COLORS - CHANGE THESE ONLY
+ ============================================
+ Update these 2 values for each client.
+ Everything else is auto-generated.
+ ============================================ */
+:root {
+  --color-primary: #017fd0;
+  --color-secondary: #012d20;
+  /* Optional: uncomment to override font */
+  /* --font-family-base: 'YourFont', system-ui, sans-serif; */
+}
+
+/* ============================================
+ ⚠️  DO NOT EDIT BELOW THIS LINE
+ Core styles — same for all clients
+ ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-family-base: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  /* === CONTAINERS === */
+  --container-small:   40rem;   /* 640px  — blog text, narrow CTAs */
+  --container-default: 64rem;   /* 1024px — standard page content  */
+  --container-large:   80rem;   /* 1280px — wide heroes, full layouts */
+  --container-padding: 1.25rem; /* 20px   — left/right page padding */
+
+  /* === STRUCTURE — Section padding === */
+  --padding-section-small:  3rem;   /* 48px  */
+  --padding-section-medium: 5rem;   /* 80px  */
+  --padding-section-large:  7.5rem; /* 120px */
+
+  /* === BORDER RADIUS === */
+  --radius-sm:   0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   2.5rem;
+  --radius-full: 9999px;
+
+  /* === SPACING SCALE === */
+  --spacing-xs:  0.25rem;
+  --spacing-sm:  0.5rem;
+  --spacing-md:  1rem;
+  --spacing-lg:  1.5rem;
+  --spacing-xl:  2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 5rem;
+  --spacing-5xl: 7.5rem;
+
+  /* === TYPOGRAPHY === */
+  --font-size-xs:   0.75rem;
+  --font-size-sm:   0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg:   1.125rem;
+  --font-size-xl:   1.25rem;
+  --font-size-2xl:  1.5rem;
+  --font-size-3xl:  1.75rem;
+  --font-size-4xl:  2rem;
+  --font-size-5xl:  2.5rem;
+  --font-size-6xl:  3rem;
+  --font-size-7xl:  4rem;
+  --font-size-8xl:  4.5rem;
+
+  --font-weight-normal:    400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight:   1.2;
+  --line-height-snug:    1.35;
+  --line-height-normal:  1.5;
+  --line-height-relaxed: 1.6;
+
+  /* === SHADOWS — kept in px === */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+
+  /* === TRANSITIONS === */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* === AUTO-GENERATED COLOR SHADES === */
+  --color-primary-50:  color-mix(in srgb, var(--color-primary) 5%,  white);
+  --color-primary-100: color-mix(in srgb, var(--color-primary) 10%, white);
+  --color-primary-200: color-mix(in srgb, var(--color-primary) 20%, white);
+  --color-primary-600: color-mix(in srgb, var(--color-primary) 90%, black 10%);
+  --color-primary-700: color-mix(in srgb, var(--color-primary) 80%, black 20%);
+  --color-primary-800: color-mix(in srgb, var(--color-primary) 70%, black 30%);
+  --color-primary-900: color-mix(in srgb, var(--color-primary) 50%, black 50%);
+  --color-primary-950: color-mix(in srgb, var(--color-primary) 15%, black 85%);
+
+  --color-secondary-50:  color-mix(in srgb, var(--color-secondary) 5%,  white);
+  --color-secondary-100: color-mix(in srgb, var(--color-secondary) 10%, white);
+  --color-secondary-600: color-mix(in srgb, var(--color-secondary) 90%, black 10%);
+  --color-secondary-700: color-mix(in srgb, var(--color-secondary) 80%, black 20%);
+
+  /* === SEMANTIC COLORS === */
+  --color-background: #ffffff;
+  --color-surface:    var(--color-primary-50);
+
+  --color-text:           color-mix(in srgb, var(--color-primary) 8%,  #1a1a1a);
+  --color-text-75:        color-mix(in srgb, var(--color-text) 75%, white);
+  --color-text-secondary: color-mix(in srgb, var(--color-primary) 6%,  #666666);
+  --color-text-muted:     color-mix(in srgb, var(--color-primary) 4%,  #999999);
+
+  --color-border:       var(--color-primary-200);
+  --color-border-light: var(--color-primary-100);
+
+  --color-btn-primary-bg:      var(--color-primary);
+  --color-btn-primary-text:    white;
+  --color-btn-primary-hover:   var(--color-primary-700);
+  --color-btn-secondary-bg:    var(--color-secondary);
+  --color-btn-secondary-text:  white;
+  --color-btn-secondary-hover: var(--color-secondary-700);
+
+  --color-card-bg:     #ffffff;
+  --color-card-border: var(--color-primary-100);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-family-base) !important;
+  font-weight: 400 !important;
+  color: var(--color-text);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-background);
+}
+
+body, body * { font-weight: inherit; }
+strong, b { font-weight: 700; }
+
+h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: var(--font-weight-semibold); line-height: var(--line-height-tight); color: var(--color-text); letter-spacing: -0.01em; }
+h1 { font-size: var(--font-size-6xl); }
+h2 { font-size: var(--font-size-5xl); }
+h3 { font-size: var(--font-size-4xl); }
+h4 { font-size: var(--font-size-3xl); }
+h5 { font-size: var(--font-size-2xl); }
+h6 { font-size: var(--font-size-lg); line-height: 1.4; }
+
+p { margin: 0; font-size: var(--font-size-base); line-height: var(--line-height-relaxed); color: var(--color-text); }
+
+ul, ol { margin: 0; padding-left: 1.5rem; }
+ul li, ol li { margin-bottom: var(--spacing-sm); font-size: var(--font-size-base); line-height: var(--line-height-relaxed); }
+ul { list-style-type: disc; }
+ol { list-style-type: decimal; }
+.list-none { list-style: none; padding-left: 0; }
+
+/* STRUCTURE */
+.page-wrapper { overflow-x: hidden; }
+.main-wrapper  { width: 100%; }
+
+.container, .container-default { width: 100%; max-width: var(--container-default); margin-inline: auto; }
+.container-small                { width: 100%; max-width: var(--container-small);   margin-inline: auto; }
+.container-large                { width: 100%; max-width: var(--container-large);   margin-inline: auto; }
+
+.padding-global         { padding-left: var(--container-padding); padding-right: var(--container-padding); }
+.padding-section-small  { padding-top: var(--padding-section-small);  padding-bottom: var(--padding-section-small);  }
+.padding-section-medium { padding-top: var(--padding-section-medium); padding-bottom: var(--padding-section-medium); }
+.padding-section-large  { padding-top: var(--padding-section-large);  padding-bottom: var(--padding-section-large);  }
+
+/* LAYOUT */
+.flex { display: flex; } .flex-col { display: flex; flex-direction: column; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.items-center { align-items: center; } .items-start { align-items: flex-start; } .items-end { align-items: flex-end; }
+.justify-center { justify-content: center; } .justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; } .justify-end { justify-content: flex-end; }
+.flex-shrink-0 { flex-shrink: 0; } .flex-grow { flex: 1; }
+.gap-xs { gap: var(--spacing-xs); } .gap-sm { gap: var(--spacing-sm); } .gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); } .gap-xl { gap: var(--spacing-xl); } .gap-2xl { gap: var(--spacing-2xl); } .gap-3xl { gap: var(--spacing-3xl); }
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.mx-auto { margin-inline: auto; } .w-full { width: 100%; } .h-full { height: 100%; }
+.text-center { text-align: center; } .text-left { text-align: left; } .text-right { text-align: right; }
+.font-normal { font-weight: var(--font-weight-normal) !important; }
+.font-medium { font-weight: var(--font-weight-medium) !important; }
+.font-semibold { font-weight: var(--font-weight-semibold) !important; }
+.font-bold { font-weight: var(--font-weight-bold) !important; }
+
+/* COLORS */
+.bg-primary { background-color: var(--color-primary); color: white; }
+.bg-primary-light { background-color: var(--color-primary-100); color: var(--color-text); }
+.bg-primary-lighter { background-color: var(--color-primary-50); color: var(--color-text); }
+.bg-primary-dark { background-color: var(--color-primary-900); color: white; }
+.bg-primary-darker { background-color: var(--color-primary-950); color: white; }
+.bg-secondary { background-color: var(--color-secondary); color: white; }
+.bg-secondary-light { background-color: var(--color-secondary-100); color: var(--color-text); }
+.bg-white { background-color: #ffffff; }
+.bg-surface { background-color: var(--color-surface); }
+.bg-grey-lighter { background-color: color-mix(in srgb, var(--color-primary) 2%, white); color: var(--color-text); }
+.bg-grey-light   { background-color: color-mix(in srgb, var(--color-primary) 4%, white); color: var(--color-text); }
+
+.text-primary { color: var(--color-primary); } .text-secondary { color: var(--color-secondary); }
+.text-75 { color: var(--color-text-75); } .text-muted { color: var(--color-text-muted); }
+.text-white { color: white; } .text-light { color: white; } .text-light-75 { color: rgba(255,255,255,0.75); }
+.text-inherit { color: inherit; }
+
+/* BORDERS — 1px kept in px */
+.border { border: 1px solid var(--color-border); }
+.border-light { border: 1px solid var(--color-border-light); }
+.border-primary { border: 1px solid var(--color-primary); }
+.border-t { border-top: 1px solid var(--color-border); }
+.border-b { border-bottom: 1px solid var(--color-border); }
+.border-l { border-left: 1px solid var(--color-border); }
+.border-r { border-right: 1px solid var(--color-border); }
+
+.rounded-sm { border-radius: var(--radius-sm); } .rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); } .rounded-full { border-radius: var(--radius-full); }
+
+.shadow-sm { box-shadow: var(--shadow-sm); } .shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); } .shadow-none { box-shadow: none; }
+
+/* BUTTONS */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-lg); border: none; border-radius: var(--radius-md); font-family: var(--font-family-base); font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); line-height: var(--line-height-normal); text-decoration: none; cursor: pointer; transition: all var(--transition-base); white-space: nowrap; flex-shrink: 0; }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background-color: var(--color-btn-primary-bg); color: var(--color-btn-primary-text); }
+.btn-primary:hover { background-color: var(--color-btn-primary-hover); }
+.btn-secondary { background-color: var(--color-btn-secondary-bg); color: var(--color-btn-secondary-text); }
+.btn-secondary:hover { background-color: var(--color-btn-secondary-hover); }
+.btn-outline { background-color: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); padding: calc(var(--spacing-md) - 2px) calc(var(--spacing-lg) - 2px); }
+.btn-outline:hover { background-color: var(--color-primary); color: white; }
+.btn-ghost { background-color: transparent; color: var(--color-primary); }
+.btn-ghost:hover { background-color: var(--color-primary-100); }
+.btn-sm { padding: var(--spacing-sm) var(--spacing-md); font-size: var(--font-size-sm); }
+.btn-lg { padding: var(--spacing-lg) var(--spacing-xl); font-size: var(--font-size-lg); }
+
+/* CARDS */
+.card { background-color: var(--color-card-bg); border-radius: var(--radius-lg); padding: var(--spacing-xl); box-shadow: var(--shadow-md); }
+.card-outlined { background-color: var(--color-card-bg); border: 1px solid var(--color-card-border); border-radius: var(--radius-lg); padding: var(--spacing-xl); }
+.card-flat { background-color: var(--color-surface); border-radius: var(--radius-lg); padding: var(--spacing-xl); }
+
+/* BADGES */
+.badge { display: inline-flex; align-items: center; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); background-color: var(--color-primary-100); color: var(--color-primary); }
+.badge-secondary { background-color: var(--color-secondary-100); color: var(--color-secondary); }
+
+a { color: var(--color-primary); text-decoration: none; transition: opacity var(--transition-fast); }
+a:hover { opacity: 0.8; }
+a.link-underline { text-decoration: underline; text-underline-offset: 3px; }
+svg, .droip-svg-icon { fill: currentColor; }
+.divider { height: 1px; background-color: var(--color-border); border: none; margin: var(--spacing-lg) 0; }
+
+/* NAV BAR */
+.nav-bar { display: flex; align-items: center; justify-content: space-between; background-color: var(--color-background); }
+.nav-bar__logo { flex-shrink: 0; height: 40px; width: auto; }
+.nav-bar a:not(.btn), .nav-bar__link { color: var(--color-text) !important; text-decoration: none; font-weight: var(--font-weight-medium); font-size: var(--font-size-base); transition: opacity var(--transition-fast); white-space: nowrap; }
+.nav-bar a:not(.btn):hover, .nav-bar__link:hover { opacity: 0.7; }
+
+/* RESPONSIVE — breakpoints kept in px */
+@media (max-width: 1024px) {
+  :root { --font-size-6xl: 2.5rem; --font-size-5xl: 2rem; --font-size-4xl: 1.75rem; }
+  .grid-cols-3, .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  :root { --container-padding: 1rem; --font-size-6xl: 2rem; --font-size-5xl: 1.75rem; --font-size-4xl: 1.5rem; }
+  .grid-cols-2, .grid-cols-3, .grid-cols-4 { grid-template-columns: 1fr; }
+  .hide-below-768 { display: none; }
+}
+@media (max-width: 640px) {
+  :root { --font-size-6xl: 1.875rem; --font-size-5xl: 1.625rem; --font-size-4xl: 1.375rem; }
+  .hide-below-640 { display: none; }
+}
+
+/* UTILITY */
+.hidden { display: none; } .block { display: block; } .inline-block { display: inline-block; }
+.relative { position: relative; } .absolute { position: absolute; }
+.overflow-hidden { overflow: hidden; } .pointer { cursor: pointer; } .p-0 { padding: 0; }
+
+/* CRITICAL OVERRIDES */
+body { font-weight: 400 !important; }
+div, span, p, a, li, td, th, label, input, textarea, select, button { font-weight: 400 !important; }
+h1, h2, h3, h4, h5, h6 { font-weight: 600 !important; }
+strong, b, .font-bold { font-weight: 700 !important; }
+.btn, .btn * { font-weight: 600 !important; }
+.font-medium { font-weight: 500 !important; } .font-semibold { font-weight: 600 !important; }
+ul, ol { padding-left: 1.5rem !important; }
+ul { list-style-type: disc !important; } ol { list-style-type: decimal !important; }
+ul li, ol li { margin-bottom: 0.5rem !important; }`;
+
+      navigator.clipboard.writeText(fullCSS).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy full CSS';
+          btn.classList.remove('copied');
+        }, 2500);
+      });
+    }
+  </script>
+
+</body>
+</html>
