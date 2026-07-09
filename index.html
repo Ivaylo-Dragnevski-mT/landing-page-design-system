@@ -553,6 +553,7 @@
       align-items: start;
     }
     .sg-row:last-child { border-bottom: none; }
+    .sg-row[id] { scroll-margin-top: 5rem; } /* clear the sticky nav when jumped-to */
     .sg-label { padding-top: 2px; }
 
     .sg-class {
@@ -1064,22 +1065,22 @@
       <p class="sg-section-desc">Every page should follow this nesting order. Think of it as layers — each layer has one job and one job only. Never skip layers or combine their responsibilities.</p>
 
       <div class="sg-diagram" style="margin-bottom: 2rem;">
-        <div class="sg-diagram-layer" style="background: var(--color-primary-50); color: var(--color-primary-900); border-color: var(--color-primary-100);">
+        <a href="#struct-page-wrapper" class="sg-diagram-layer sg-diagram-layer--link" style="background: var(--color-primary-50); color: var(--color-primary-900); border-color: var(--color-primary-100);">
           .page-wrapper
-          <span class="sg-diagram-label">Outermost div on the page. Wraps everything. Use for overflow-x: hidden if needed.</span>
-        </div>
-        <div class="sg-diagram-layer sg-diagram-indent-1" style="background: var(--color-primary-100); color: var(--color-primary-900); border-color: var(--color-primary-200);">
+          <span class="sg-diagram-label">Outermost div on the page. Wraps everything. Use for overflow-x: hidden if needed. → Details below</span>
+        </a>
+        <a href="#struct-main-wrapper" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-1" style="background: var(--color-primary-100); color: var(--color-primary-900); border-color: var(--color-primary-200);">
           &lt;main&gt; .main-wrapper
-          <span class="sg-diagram-label">Wraps all content between the nav and footer. Signals "main content" to screen readers.</span>
-        </div>
-        <div class="sg-diagram-layer sg-diagram-indent-2" style="background: var(--color-primary-200); color: var(--color-primary-900); border-color: var(--color-border);">
+          <span class="sg-diagram-label">Wraps all content between the nav and footer. Signals "main content" to screen readers. → Details below</span>
+        </a>
+        <a href="#struct-section" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-2" style="background: var(--color-primary-200); color: var(--color-primary-900); border-color: var(--color-border);">
           &lt;section&gt; .section_hero
-          <span class="sg-diagram-label">One per content section. Name it descriptively: section_hero, section_features, section_testimonials…</span>
-        </div>
-        <div class="sg-diagram-layer sg-diagram-indent-3" style="background: var(--color-primary); color: white; border-color: var(--color-primary-700);">
+          <span class="sg-diagram-label">One per content section. Name it descriptively: section_hero, section_features, section_testimonials… → Details below</span>
+        </a>
+        <a href="#struct-padding-global" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-3" style="background: var(--color-primary); color: white; border-color: var(--color-primary-700);">
           .padding-global
-          <span class="sg-diagram-label">Left/right page padding — and nothing else. Wraps the container.</span>
-        </div>
+          <span class="sg-diagram-label">Left/right page padding — and nothing else. Wraps the container. → Details below</span>
+        </a>
         <a href="#containers" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-4" style="background: var(--color-primary-600); color: white; border-color: var(--color-primary-700);">
           .container (or .container-small / .container-large)
           <span class="sg-diagram-label">Centers content and sets max-width. Choose the size for the content type. → Go to Containers</span>
@@ -1088,17 +1089,17 @@
           .padding-section-small / -medium / -large
           <span class="sg-diagram-label">Top/bottom section spacing. Sits inside the container. → Go to Section Padding</span>
         </a>
-        <div class="sg-diagram-layer sg-diagram-indent-6" style="background: var(--color-primary-800); color: white; border-color: var(--color-primary-900);">
+        <a href="#struct-section-content" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-6" style="background: var(--color-primary-800); color: white; border-color: var(--color-primary-900);">
           .section-content
-          <span class="sg-diagram-label">Wrapper for the section's actual content. Apply layout utilities (grid, flex, gaps) here.</span>
-        </div>
+          <span class="sg-diagram-label">Wrapper for the section's actual content. Apply layout utilities (grid, flex, gaps) here. → Details below</span>
+        </a>
         <div class="sg-diagram-layer sg-diagram-indent-7" style="background: var(--color-primary-900); color: white; border-color: var(--color-primary-950);">
           Your content — headings, grids, cards, text…
           <span class="sg-diagram-label">Everything else goes here: components, color classes, and content.</span>
         </div>
       </div>
 
-      <div class="sg-row" style="border-top: 1px solid var(--color-border-light);">
+      <div class="sg-row" id="struct-page-wrapper" style="border-top: 1px solid var(--color-border-light);">
         <div class="sg-label">
           <div class="sg-class">page-wrapper</div>
           <div class="sg-desc">One per page. Never style it heavily — it's an anchor, not a layout element.</div>
@@ -1110,7 +1111,7 @@
         </div>
       </div>
 
-      <div class="sg-row">
+      <div class="sg-row" id="struct-main-wrapper">
         <div class="sg-label">
           <div class="sg-class">main-wrapper</div>
           <div class="sg-desc">Use the <code style="font-size:12px;">&lt;main&gt;</code> HTML tag. Excludes nav and footer.</div>
@@ -1122,7 +1123,7 @@
         </div>
       </div>
 
-      <div class="sg-row">
+      <div class="sg-row" id="struct-section">
         <div class="sg-label">
           <div class="sg-class">section_[name]</div>
           <div class="sg-desc">Use the <code style="font-size:12px;">&lt;section&gt;</code> HTML tag. Name each one uniquely.</div>
@@ -1140,7 +1141,7 @@
         </div>
       </div>
 
-      <div class="sg-row">
+      <div class="sg-row" id="struct-padding-global">
         <div class="sg-label">
           <div class="sg-class">padding-global</div>
           <div class="sg-desc">On its own div wrapping the container — nothing else on it. Controls left/right padding only.</div>
@@ -1152,7 +1153,7 @@
         </div>
       </div>
 
-      <div class="sg-row">
+      <div class="sg-row" id="struct-section-content">
         <div class="sg-label">
           <div class="sg-class">section-content</div>
           <div class="sg-desc">Wrapper inside <code style="font-size:12px;">padding-section-*</code>. Holds the section's heading, grids, cards, and text.</div>
