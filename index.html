@@ -416,6 +416,16 @@
         --font-size-6xl: 2.5rem;  /* 40px */
         --font-size-5xl: 2rem;    /* 32px */
         --font-size-4xl: 1.75rem; /* 28px */
+
+        /* Structural spacing scales down (~80% of desktop).
+           Functional spacing xs–xl stays fixed. */
+        --padding-section-small:  2.5rem; /* 40px */
+        --padding-section-medium: 4rem;   /* 64px */
+        --padding-section-large:  6rem;   /* 96px */
+        --spacing-2xl: 2.5rem;    /* 40px */
+        --spacing-3xl: 3.5rem;    /* 56px */
+        --spacing-4xl: 4rem;      /* 64px */
+        --spacing-5xl: 6rem;      /* 96px */
       }
       .grid-cols-3,
       .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
@@ -427,6 +437,15 @@
         --font-size-6xl: 2rem;     /* 32px */
         --font-size-5xl: 1.75rem;  /* 28px */
         --font-size-4xl: 1.5rem;   /* 24px */
+
+        /* Structural spacing scales down again (~55–65% of desktop). */
+        --padding-section-small:  2rem;   /* 32px */
+        --padding-section-medium: 3rem;   /* 48px */
+        --padding-section-large:  4rem;   /* 64px */
+        --spacing-2xl: 2rem;      /* 32px */
+        --spacing-3xl: 2.5rem;    /* 40px */
+        --spacing-4xl: 3rem;      /* 48px */
+        --spacing-5xl: 4rem;      /* 64px */
       }
       .grid-cols-2,
       .grid-cols-3,
@@ -616,6 +635,8 @@
     .sg-diagram-indent-3 { margin-left: 3.75rem; }
     .sg-diagram-indent-4 { margin-left: 5rem; }
     .sg-diagram-indent-5 { margin-left: 6.25rem; }
+    .sg-diagram-indent-6 { margin-left: 7.5rem; }
+    .sg-diagram-indent-7 { margin-left: 8.75rem; }
 
     /* Color swatches */
     .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem; }
@@ -717,8 +738,24 @@
         </div>
       </div>
 
+      <p class="text-small" style="color: var(--color-text-secondary); margin: 0 0 1rem; line-height: 1.6; max-width: 65ch;">
+        <strong style="color: var(--color-text);">What this snippet does:</strong> it sets up <strong style="color: var(--color-text);">fluid type scaling</strong> — the <code style="font-family:'Courier New',monospace; font-size:0.85em; background:var(--color-primary-50); padding:1px 5px; border-radius:4px;">html</code> font-size scales smoothly with the viewport, so every <code style="font-family:'Courier New',monospace; font-size:0.85em; background:var(--color-primary-50); padding:1px 5px; border-radius:4px;">rem</code>-based value (type, spacing, containers) scales with it. Fonts import at the top — switch the client typeface via <code style="font-family:'Courier New',monospace; font-size:0.85em; background:var(--color-primary-50); padding:1px 5px; border-radius:4px;">--font-family-base</code> (Inter / Montserrat). Only the two brand colors need editing per client.
+      </p>
+
       <div class="sg-snippet-wrap">
-        <pre class="sg-snippet-code" id="snippetCode"><span class="token-comment">/* ============================================
+        <pre class="sg-snippet-code" id="snippetCode"><span class="token-comment">/* Fonts — must be imported before any other rule */</span>
+<span class="token-value">@import</span> <span class="token-punct">url(</span><span class="token-value">'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap'</span><span class="token-punct">);</span>
+<span class="token-value">@import</span> <span class="token-punct">url(</span><span class="token-value">'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap'</span><span class="token-punct">);</span>
+
+<span class="token-comment">/* === FLUID TYPE SCALING (root font-size) ===
+   The html font-size scales with the viewport, so every rem-based
+   size (type, spacing, containers) scales with it. */</span>
+<span class="token-value">html</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">calc(0.625rem + 0.41666666666666663vw)</span><span class="token-punct">; }</span>
+<span class="token-value">@media screen and (max-width: 1920px)</span> <span class="token-punct">{</span> <span class="token-value">html</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">calc(0.625rem + 0.41666666666666674vw)</span><span class="token-punct">; } }</span>
+<span class="token-value">@media screen and (max-width: 1440px)</span> <span class="token-punct">{</span> <span class="token-value">html</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">calc(0.8126951092611863rem + 0.20811654526534862vw)</span><span class="token-punct">; } }</span>
+<span class="token-value">@media screen and (max-width: 479px)</span>  <span class="token-punct">{</span> <span class="token-value">html</span> <span class="token-punct">{</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">calc(0.7494769874476988rem + 0.8368200836820083vw)</span><span class="token-punct">; } }</span>
+
+<span class="token-comment">/* ============================================
  🎨 CLIENT COLORS - CHANGE THESE ONLY
  ============================================
  Update these 2 values for each client.
@@ -736,10 +773,10 @@
  Core styles — same for all clients
  ============================================ */</span>
 
-<span class="token-value">@import</span> <span class="token-punct">url(</span><span class="token-value">'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap'</span><span class="token-punct">);</span>
-
 <span class="token-punct">:root {</span>
+  <span class="token-comment">/* Font — switch client typeface by toggling these: */</span>
   <span class="token-key">--font-family-base</span><span class="token-punct">:</span> <span class="token-value">'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif</span><span class="token-punct">;</span>
+  <span class="token-comment">/* --font-family-base: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; */</span>
 
   <span class="token-comment">/* === CONTAINERS === */</span>
   <span class="token-key">--container-small</span><span class="token-punct">:</span>   <span class="token-value">40rem</span><span class="token-punct">;</span>   <span class="token-comment">/* 640px  — blog text, narrow CTAs */</span>
@@ -980,18 +1017,17 @@
 <span class="token-value">.nav-bar a:not(.btn), .nav-bar__link</span> <span class="token-punct">{</span> <span class="token-key">color</span><span class="token-punct">:</span> <span class="token-value">var(--color-text)</span> <span class="token-punct">!important;</span> <span class="token-key">text-decoration</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">;</span> <span class="token-key">font-weight</span><span class="token-punct">:</span> <span class="token-value">var(--font-weight-medium)</span><span class="token-punct">;</span> <span class="token-key">font-size</span><span class="token-punct">:</span> <span class="token-value">var(--font-size-base)</span><span class="token-punct">;</span> <span class="token-key">transition</span><span class="token-punct">:</span> <span class="token-value">opacity var(--transition-fast)</span><span class="token-punct">;</span> <span class="token-key">white-space</span><span class="token-punct">:</span> <span class="token-value">nowrap</span><span class="token-punct">; }</span>
 <span class="token-value">.nav-bar a:not(.btn):hover, .nav-bar__link:hover</span> <span class="token-punct">{</span> <span class="token-key">opacity</span><span class="token-punct">:</span> <span class="token-value">0.7</span><span class="token-punct">; }</span>
 
-<span class="token-comment">/* RESPONSIVE — breakpoints kept in px */</span>
+<span class="token-comment">/* RESPONSIVE — layout only. Type now scales via the fluid
+   html font-size at the top, so no font-size overrides here. */</span>
 <span class="token-value">@media (max-width: 1024px)</span> <span class="token-punct">{</span>
-  <span class="token-key">:root</span> <span class="token-punct">{</span> <span class="token-key">--font-size-6xl</span><span class="token-punct">:</span> <span class="token-value">2.5rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-5xl</span><span class="token-punct">:</span> <span class="token-value">2rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-4xl</span><span class="token-punct">:</span> <span class="token-value">1.75rem</span><span class="token-punct">; }</span>
   <span class="token-value">.grid-cols-3, .grid-cols-4</span> <span class="token-punct">{</span> <span class="token-key">grid-template-columns</span><span class="token-punct">:</span> <span class="token-value">repeat(2, 1fr)</span><span class="token-punct">; }</span>
 <span class="token-punct">}</span>
 <span class="token-value">@media (max-width: 768px)</span> <span class="token-punct">{</span>
-  <span class="token-key">:root</span> <span class="token-punct">{</span> <span class="token-key">--container-padding</span><span class="token-punct">:</span> <span class="token-value">1rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-6xl</span><span class="token-punct">:</span> <span class="token-value">2rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-5xl</span><span class="token-punct">:</span> <span class="token-value">1.75rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-4xl</span><span class="token-punct">:</span> <span class="token-value">1.5rem</span><span class="token-punct">; }</span>
+  <span class="token-key">:root</span> <span class="token-punct">{</span> <span class="token-key">--container-padding</span><span class="token-punct">:</span> <span class="token-value">1rem</span><span class="token-punct">; }</span>
   <span class="token-value">.grid-cols-2, .grid-cols-3, .grid-cols-4</span> <span class="token-punct">{</span> <span class="token-key">grid-template-columns</span><span class="token-punct">:</span> <span class="token-value">1fr</span><span class="token-punct">; }</span>
   <span class="token-value">.hide-below-768</span> <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">; }</span>
 <span class="token-punct">}</span>
 <span class="token-value">@media (max-width: 640px)</span> <span class="token-punct">{</span>
-  <span class="token-key">:root</span> <span class="token-punct">{</span> <span class="token-key">--font-size-6xl</span><span class="token-punct">:</span> <span class="token-value">1.875rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-5xl</span><span class="token-punct">:</span> <span class="token-value">1.625rem</span><span class="token-punct">;</span> <span class="token-key">--font-size-4xl</span><span class="token-punct">:</span> <span class="token-value">1.375rem</span><span class="token-punct">; }</span>
   <span class="token-value">.hide-below-640</span> <span class="token-punct">{</span> <span class="token-key">display</span><span class="token-punct">:</span> <span class="token-value">none</span><span class="token-punct">; }</span>
 <span class="token-punct">}</span>
 
@@ -1040,17 +1076,25 @@
           &lt;section&gt; .section_hero
           <span class="sg-diagram-label">One per content section. Name it descriptively: section_hero, section_features, section_testimonials…</span>
         </div>
-        <a href="#section-padding" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-3" style="background: var(--color-primary); color: white; border-color: var(--color-primary-700);">
-          padding-global + padding-section-medium
-          <span class="sg-diagram-label">Two classes on the same div. Controls left/right padding AND top/bottom section spacing. → Go to Section Padding</span>
+        <div class="sg-diagram-layer sg-diagram-indent-3" style="background: var(--color-primary); color: white; border-color: var(--color-primary-700);">
+          .padding-global
+          <span class="sg-diagram-label">Left/right page padding — and nothing else. Wraps the container.</span>
+        </div>
+        <a href="#containers" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-4" style="background: var(--color-primary-600); color: white; border-color: var(--color-primary-700);">
+          .container (or .container-small / .container-large)
+          <span class="sg-diagram-label">Centers content and sets max-width. Choose the size for the content type. → Go to Containers</span>
         </a>
-        <a href="#containers" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-4" style="background: var(--color-primary-700); color: white; border-color: var(--color-primary-800);">
-          container (or container-small / container-large)
-          <span class="sg-diagram-label">Centers content and sets max-width. Choose the right size for the content type. → Go to Containers</span>
+        <a href="#section-padding" class="sg-diagram-layer sg-diagram-layer--link sg-diagram-indent-5" style="background: var(--color-primary-700); color: white; border-color: var(--color-primary-800);">
+          .padding-section-small / -medium / -large
+          <span class="sg-diagram-label">Top/bottom section spacing. Sits inside the container. → Go to Section Padding</span>
         </a>
-        <div class="sg-diagram-layer sg-diagram-indent-5" style="background: var(--color-primary-900); color: white; border-color: var(--color-primary-950);">
+        <div class="sg-diagram-layer sg-diagram-indent-6" style="background: var(--color-primary-800); color: white; border-color: var(--color-primary-900);">
+          .section-content
+          <span class="sg-diagram-label">Wrapper for the section's actual content. Apply layout utilities (grid, flex, gaps) here.</span>
+        </div>
+        <div class="sg-diagram-layer sg-diagram-indent-7" style="background: var(--color-primary-900); color: white; border-color: var(--color-primary-950);">
           Your content — headings, grids, cards, text…
-          <span class="sg-diagram-label">Everything else goes here. Use layout utilities, components, and color classes.</span>
+          <span class="sg-diagram-label">Everything else goes here: components, color classes, and content.</span>
         </div>
       </div>
 
@@ -1099,11 +1143,23 @@
       <div class="sg-row">
         <div class="sg-label">
           <div class="sg-class">padding-global</div>
-          <div class="sg-desc">Always on the same div as <code style="font-size:12px;">padding-section-*</code>. Controls left/right only.</div>
+          <div class="sg-desc">On its own div wrapping the container — nothing else on it. Controls left/right padding only.</div>
         </div>
         <div class="sg-preview">
           <div class="card-flat is-info" style="padding: 1rem; font-size: 0.8125rem;">
             Sets <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">padding-left</code> and <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">padding-right</code> to <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">--container-padding</code> (1.25rem). Change this one variable to update all page margins site-wide.
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-label">
+          <div class="sg-class">section-content</div>
+          <div class="sg-desc">Wrapper inside <code style="font-size:12px;">padding-section-*</code>. Holds the section's heading, grids, cards, and text.</div>
+        </div>
+        <div class="sg-preview">
+          <div class="card-flat is-info" style="padding: 1rem; font-size: 0.8125rem;">
+            A structural wrapper — like <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">section_[name]</code>, it carries no required styles. Apply layout utilities here (<code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">grid</code>, <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">flex</code>, <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">gap-*</code>) to arrange the content.
           </div>
         </div>
       </div>
@@ -1113,7 +1169,7 @@
     <section class="sg-section" id="section-padding">
       <div class="sg-section-title">03</div>
       <div class="sg-section-heading">Section Padding</div>
-      <p class="sg-section-desc">Controls the vertical breathing room between sections. Always combine with <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">.padding-global</code> on the same element.</p>
+      <p class="sg-section-desc">Controls the vertical breathing room inside each section. Sits on its own div inside the <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">.container</code>, wrapping <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">.section-content</code>.</p>
 
       <div class="sg-row" style="border-top: 1px solid var(--color-border-light);">
         <div class="sg-label">
@@ -1695,7 +1751,22 @@
 
     // ── Copy snippet ──
     function copySnippet() {
-      const fullCSS = `/* ============================================
+      const fullCSS = `/* Fonts — must be imported before any other rule */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+/* ============================================
+   FLUID TYPE SCALING (root font-size)
+   The html font-size scales with viewport width, so every
+   rem-based size (type, spacing, containers) scales with it.
+   Generated with Finsweet's Fluid Responsive tool.
+   ============================================ */
+html { font-size: calc(0.625rem + 0.41666666666666663vw); }
+@media screen and (max-width: 1920px) { html { font-size: calc(0.625rem + 0.41666666666666674vw); } }
+@media screen and (max-width: 1440px) { html { font-size: calc(0.8126951092611863rem + 0.20811654526534862vw); } }
+@media screen and (max-width: 479px)  { html { font-size: calc(0.7494769874476988rem + 0.8368200836820083vw); } }
+
+/* ============================================
  🎨 CLIENT COLORS - CHANGE THESE ONLY
  ============================================
  Update these 2 values for each client.
@@ -1713,10 +1784,10 @@
  Core styles — same for all clients
  ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 :root {
+  /* Font — switch client typeface by toggling these: */
   --font-family-base: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  /* --font-family-base: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; */
 
   /* === CONTAINERS === */
   --container-small:   40rem;   /* 640px  — blog text, narrow CTAs */
@@ -1951,18 +2022,19 @@ svg, .droip-svg-icon { fill: currentColor; }
 .nav-bar a:not(.btn), .nav-bar__link { color: var(--color-text) !important; text-decoration: none; font-weight: var(--font-weight-medium); font-size: var(--font-size-base); transition: opacity var(--transition-fast); white-space: nowrap; }
 .nav-bar a:not(.btn):hover, .nav-bar__link:hover { opacity: 0.7; }
 
-/* RESPONSIVE — breakpoints kept in px */
+/* RESPONSIVE — breakpoints kept in px.
+   NOTE: font sizes are NOT shrunk here anymore — the fluid html
+   font-size at the top scales type continuously. These queries
+   now handle layout only (grid columns, container padding, hiding). */
 @media (max-width: 1024px) {
-  :root { --font-size-6xl: 2.5rem; --font-size-5xl: 2rem; --font-size-4xl: 1.75rem; }
   .grid-cols-3, .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  :root { --container-padding: 1rem; --font-size-6xl: 2rem; --font-size-5xl: 1.75rem; --font-size-4xl: 1.5rem; }
+  :root { --container-padding: 1rem; }
   .grid-cols-2, .grid-cols-3, .grid-cols-4 { grid-template-columns: 1fr; }
   .hide-below-768 { display: none; }
 }
 @media (max-width: 640px) {
-  :root { --font-size-6xl: 1.875rem; --font-size-5xl: 1.625rem; --font-size-4xl: 1.375rem; }
   .hide-below-640 { display: none; }
 }
 
