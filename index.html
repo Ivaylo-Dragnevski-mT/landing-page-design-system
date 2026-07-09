@@ -1527,7 +1527,7 @@
     <section class="sg-section" id="spacing-utilities">
       <div class="sg-section-title">15</div>
       <div class="sg-section-heading">Spacing Utilities</div>
-      <p class="sg-section-desc">Reference only — not in the master snippet. Combine a <strong>direction</strong> class with a <strong>size</strong> class on the same element. The direction defines which sides receive padding; the size sets the value via a scoped CSS custom property.</p>
+      <p class="sg-section-desc">Reference only — not in the master snippet. Combine a <strong>direction</strong> class with a <strong>size</strong> class on the same element. The direction defines which sides receive the spacing; the size sets the value. Everything below exists in both <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">padding-*</code> and <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">margin-*</code> forms with identical values — just swap the prefix.</p>
 
       <div style="background: color-mix(in srgb, #f59e0b 12%, white); border: 1px solid color-mix(in srgb, #f59e0b 30%, white); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 2rem; font-size: var(--font-size-sm); color: #92400e;">
         ⚠️ These classes are a <strong>Droip-side utility</strong> — apply them in the page builder. They are not included in the CSS snippet pasted into Custom Code.
@@ -1539,7 +1539,9 @@
         <div style="background: #0f172a; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #94a3b8; line-height: 1.7;">
           <span style="color:#7dd3fc;">&lt;div</span> <span style="color:#86efac;">class</span>=<span style="color:#fca5a5;">"padding-vertical padding-large"</span><span style="color:#7dd3fc;">&gt;</span><span style="color:#94a3b8;">...</span><span style="color:#7dd3fc;">&lt;/div&gt;</span><br>
           <span style="color:#7dd3fc;">&lt;div</span> <span style="color:#86efac;">class</span>=<span style="color:#fca5a5;">"padding-horizontal padding-medium"</span><span style="color:#7dd3fc;">&gt;</span><span style="color:#94a3b8;">...</span><span style="color:#7dd3fc;">&lt;/div&gt;</span><br>
-          <span style="color:#7dd3fc;">&lt;div</span> <span style="color:#86efac;">class</span>=<span style="color:#fca5a5;">"padding-top padding-small"</span><span style="color:#7dd3fc;">&gt;</span><span style="color:#94a3b8;">...</span><span style="color:#7dd3fc;">&lt;/div&gt;</span>
+          <span style="color:#7dd3fc;">&lt;div</span> <span style="color:#86efac;">class</span>=<span style="color:#fca5a5;">"padding-top padding-small"</span><span style="color:#7dd3fc;">&gt;</span><span style="color:#94a3b8;">...</span><span style="color:#7dd3fc;">&lt;/div&gt;</span><br>
+          <span style="color:#fca5a5;">&lt;!-- margins work the same way --&gt;</span><br>
+          <span style="color:#7dd3fc;">&lt;div</span> <span style="color:#86efac;">class</span>=<span style="color:#fca5a5;">"margin-bottom margin-large"</span><span style="color:#7dd3fc;">&gt;</span><span style="color:#94a3b8;">...</span><span style="color:#7dd3fc;">&lt;/div&gt;</span>
         </div>
       </div>
 
@@ -1599,79 +1601,81 @@
           </div>
 
         </div>
+        <p class="text-small text-muted" style="margin-top: 0.75rem;">The same six directions exist for margins — swap the prefix: <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">margin-top</code>, <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">margin-vertical</code>, and so on.</p>
       </div>
 
       <!-- Size classes -->
       <div>
-        <div class="sg-desc" style="margin-bottom: 1rem; font-weight: 600 !important; color: var(--color-text);">Size classes</div>
-        <div style="display: grid; grid-template-columns: 220px 1fr max-content; gap: 0; border: 1px solid var(--color-border-light); border-radius: var(--radius-md); overflow: hidden;">
+        <div class="sg-desc" style="margin-bottom: 0.25rem; font-weight: 600 !important; color: var(--color-text);">Size classes</div>
+        <div class="text-small text-muted" style="margin-bottom: 1rem;">One scale, two prefixes — identical values for <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">padding-*</code> and <code style="font-size:12px; background:var(--color-primary-50); padding:1px 5px; border-radius:3px;">margin-*</code>.</div>
+        <div style="display: grid; grid-template-columns: 240px 1fr max-content; gap: 0; border: 1px solid var(--color-border-light); border-radius: var(--radius-md); overflow: hidden;">
           <!-- Header -->
           <div style="padding: 0.5rem 1rem; background: var(--color-surface); font-size: var(--font-size-xs); font-weight: 600 !important; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--color-border-light);">Class</div>
           <div style="padding: 0.5rem 1rem; background: var(--color-surface); font-size: var(--font-size-xs); font-weight: 600 !important; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--color-border-light);">Visual</div>
           <div style="padding: 0.5rem 1rem; background: var(--color-surface); font-size: var(--font-size-xs); font-weight: 600 !important; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--color-border-light);">Value</div>
 
           <!-- padding-0 -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-0</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-0</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-0</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 2px; background: var(--color-border); border-radius: 2px;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">0</div>
 
           <!-- padding-tiny -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-tiny</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-tiny</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-tiny</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 4px; background: var(--color-primary); border-radius: 2px; opacity: 0.7;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">0.25rem / 4px</div>
 
           <!-- padding-xxsmall -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xxsmall</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-xxsmall</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-xxsmall</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 8px; background: var(--color-primary); border-radius: 2px; opacity: 0.75;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">0.5rem / 8px</div>
 
           <!-- padding-xsmall -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xsmall</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-xsmall</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-xsmall</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 16px; background: var(--color-primary); border-radius: 2px; opacity: 0.8;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">1rem / 16px</div>
 
           <!-- padding-small -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-small</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-small</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-small</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 24px; background: var(--color-primary); border-radius: 2px; opacity: 0.82;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">1.5rem / 24px</div>
 
           <!-- padding-medium -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-medium</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-medium</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-medium</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 32px; background: var(--color-primary); border-radius: 2px; opacity: 0.85;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">2rem / 32px</div>
 
           <!-- padding-large -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-large</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-large</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-large</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 48px; background: var(--color-primary); border-radius: 2px; opacity: 0.87;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">3rem / 48px</div>
 
           <!-- padding-xlarge -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xlarge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-xlarge</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-xlarge</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 64px; background: var(--color-primary); border-radius: 2px; opacity: 0.89;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">4rem / 64px</div>
 
           <!-- padding-xxlarge -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xxlarge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-xxlarge</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-xxlarge</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 80px; background: var(--color-primary); border-radius: 2px; opacity: 0.91;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">5rem / 80px</div>
 
           <!-- padding-huge -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-huge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-huge</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-huge</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 120px; background: var(--color-primary); border-radius: 2px; opacity: 0.93;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">7.5rem / 120px</div>
 
           <!-- padding-xhuge -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xhuge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-xhuge</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-xhuge</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 160px; background: var(--color-primary); border-radius: 2px; opacity: 0.95;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">10rem / 160px</div>
 
           <!-- padding-xxhuge -->
-          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-xxhuge</span></div>
+          <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-xxhuge</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-xxhuge</span></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center;"><div style="height: 12px; width: 200px; background: var(--color-primary); border-radius: 2px; opacity: 0.97;"></div></div>
           <div style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">12.5rem / 200px</div>
 
           <!-- padding-custom1 -->
-          <div style="padding: 0.625rem 1rem; display: flex; align-items: center;"><span class="sg-class" style="margin:0;">padding-custom1</span></div>
+          <div style="padding: 0.625rem 1rem; display: flex; align-items: center;"><div style="display:flex; flex-direction:column; gap:2px; line-height:1.25;"><span class="sg-class" style="margin:0;">padding-custom1</span><span class="sg-class" style="margin:0; opacity:0.5;">margin-custom1</span></div></div>
           <div style="padding: 0.625rem 1rem; display: flex; align-items: center; font-size: var(--font-size-xs); color: var(--color-text-muted); font-style: italic;">project-specific override</div>
           <div style="padding: 0.625rem 1rem; display: flex; align-items: center; font-size: var(--font-size-sm); color: var(--color-text); font-family: 'Courier New', monospace; cursor: pointer; user-select: none; white-space: nowrap; transition: background var(--transition-fast); border-radius: 4px; padding: 0.625rem 1rem;" onclick="copySpacingValue(this)">—</div>
         </div>
