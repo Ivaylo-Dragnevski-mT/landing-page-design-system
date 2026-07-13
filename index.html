@@ -664,6 +664,9 @@
     .type-meta { min-width: 160px; flex-shrink: 0; }
     .type-meta .sg-class { margin-bottom: 0; }
     .type-sample { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .type-rem { cursor: pointer; user-select: none; border-radius: 4px; padding: 1px 4px; margin: 0 -4px; transition: background var(--transition-fast), color var(--transition-fast); }
+    .type-rem:hover { background: color-mix(in srgb, var(--color-primary) 12%, white); color: var(--color-primary); }
+    .type-rem.copied { background: color-mix(in srgb, var(--color-primary) 12%, white); color: var(--color-primary); }
 
     /* Container size viz */
     .container-viz { background: var(--color-background); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 0.75rem; }
@@ -1314,16 +1317,16 @@
       <p class="sg-section-desc">Font is Inter by default. All sizes in rem — they scale with the user's browser font preferences. Override <code style="font-size:13px; background:var(--color-primary-50); padding:2px 6px; border-radius:4px;">--font-family-base</code> in the client section to change the font.</p>
 
       <div style="margin-bottom: 2rem;">
-        <div class="type-row"><div class="type-meta"><span class="sg-class">h1</span><div class="sg-desc">3rem · 48px</div></div><div class="type-sample"><h1 style="font-size:var(--font-size-6xl);">Page Heading</h1></div></div>
-        <div class="type-row"><div class="type-meta"><span class="sg-class">h2</span><div class="sg-desc">2.5rem · 40px</div></div><div class="type-sample"><h2 style="font-size:var(--font-size-5xl);">Section Heading</h2></div></div>
-        <div class="type-row"><div class="type-meta"><span class="sg-class">h3</span><div class="sg-desc">2rem · 32px</div></div><div class="type-sample"><h3 style="font-size:var(--font-size-4xl);">Subsection</h3></div></div>
-        <div class="type-row"><div class="type-meta"><span class="sg-class">h4</span><div class="sg-desc">1.75rem · 28px</div></div><div class="type-sample"><h4 style="font-size:var(--font-size-3xl);">Card Title</h4></div></div>
-        <div class="type-row"><div class="type-meta"><span class="sg-class">h5</span><div class="sg-desc">1.5rem · 24px</div></div><div class="type-sample"><h5 style="font-size:var(--font-size-2xl);">Label Heading</h5></div></div>
-        <div class="type-row"><div class="type-meta"><span class="sg-class">h6</span><div class="sg-desc">1.125rem · 18px</div></div><div class="type-sample"><h6>Small Heading</h6></div></div>
-        <div class="type-row"><div class="type-meta"><span >p</span><div class="sg-desc">1rem · 16px</div></div><div class="type-sample"><p>Body text. The quick brown fox jumps over the lazy dog.</p></div></div>
-        <div class="type-row"><div class="type-meta"><span class="sg-class">text-large</span><div class="sg-desc">1.125rem · 18px</div></div><div class="type-sample"><p style="font-size:var(--font-size-lg);">Large body — intros and leads.</p></div></div>
-        <div class="type-row"><div class="type-meta"><span class="sg-class">text-small</span><div class="sg-desc">0.875rem · 14px</div></div><div class="type-sample"><p style="font-size:var(--font-size-sm);">Small — captions and secondary info.</p></div></div>
-        <div class="type-row"><div class="type-meta"><span class="sg-class">text-xs</span><div class="sg-desc">0.75rem · 12px</div></div><div class="type-sample"><p style="font-size:var(--font-size-xs);">Extra small — labels, badges, metadata.</p></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h1</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">3rem</span> · 48px</div></div><div class="type-sample"><h1 style="font-size:var(--font-size-6xl);">Page Heading</h1></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h2</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">2.5rem</span> · 40px</div></div><div class="type-sample"><h2 style="font-size:var(--font-size-5xl);">Section Heading</h2></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h3</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">2rem</span> · 32px</div></div><div class="type-sample"><h3 style="font-size:var(--font-size-4xl);">Subsection</h3></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h4</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">1.75rem</span> · 28px</div></div><div class="type-sample"><h4 style="font-size:var(--font-size-3xl);">Card Title</h4></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h5</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">1.5rem</span> · 24px</div></div><div class="type-sample"><h5 style="font-size:var(--font-size-2xl);">Label Heading</h5></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">h6</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">1.125rem</span> · 18px</div></div><div class="type-sample"><h6>Small Heading</h6></div></div>
+        <div class="type-row"><div class="type-meta"><span >p</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">1rem</span> · 16px</div></div><div class="type-sample"><p>Body text. The quick brown fox jumps over the lazy dog.</p></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">text-large</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">1.125rem</span> · 18px</div></div><div class="type-sample"><p style="font-size:var(--font-size-lg);">Large body — intros and leads.</p></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">text-small</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">0.875rem</span> · 14px</div></div><div class="type-sample"><p style="font-size:var(--font-size-sm);">Small — captions and secondary info.</p></div></div>
+        <div class="type-row"><div class="type-meta"><span class="sg-class">text-xs</span><div class="sg-desc"><span class="type-rem" onclick="copyRem(this)">0.75rem</span> · 12px</div></div><div class="type-sample"><p style="font-size:var(--font-size-xs);">Extra small — labels, badges, metadata.</p></div></div>
       </div>
 
       <p style="font-size: 0.8125rem; font-weight: 600 !important; margin-bottom: 1rem; color: var(--color-text-secondary);">FONT WEIGHTS</p>
@@ -1731,6 +1734,21 @@
           el.textContent = orig;
           el.style.background = origBg;
           el.style.color = 'var(--color-text)';
+        }, 1500);
+      });
+    }
+
+    // ── Typography rem value copy ──
+    function copyRem(el) {
+      const val = el.textContent.trim();
+      if (!val) return;
+      navigator.clipboard.writeText(val).then(() => {
+        const orig = el.textContent;
+        el.textContent = '✓ Copied!';
+        el.classList.add('copied');
+        setTimeout(() => {
+          el.textContent = orig;
+          el.classList.remove('copied');
         }, 1500);
       });
     }
